@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ inputs, allowed-unfree-packages, config, lib, pkgs, ... }:
 
-{
+{ 
+  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  #   "languagetool-8.6.0"
+  # ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "guillaume";
@@ -122,12 +126,12 @@
         };
       };
 
-      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      #   ublock-origin
-      #   bitwarden
-      #   simple-tab-groups
-      #   language-tool
-      # ];
+      extensions = with inputs.firefox-addons; [
+        ublock-origin
+        bitwarden
+        simple-tab-groups
+        # languagetool  # TODO: Requires unfree packages allowed
+      ];
     };
   };
 }
