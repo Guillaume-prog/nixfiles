@@ -1,6 +1,11 @@
-{ inputs, allowed-unfree-packages, config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 { 
+
+  imports = [
+    ../../modules/home-manager
+  ];
+
   # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
   #   "languagetool-8.6.0"
   # ];
@@ -76,62 +81,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # Custom git configuration
-  programs.git = {
-    enable = true;
-    userName = "Guillaume-prog";
-    userEmail = "76855158+Guillaume-prog@users.noreply.github.com";
-    aliases = {
-      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-    };
-  };
-
-  # Custom firefox configuration
-  programs.firefox = {
-    enable = true;
-    profiles.default = {
-      id = 0;
-      name = "default";
-      isDefault = true;
-
-      settings = {
-        "browser.startup.homepage" = "about:home";
-        "browser.search.defaultenginename" = "DuckDuckGo";
-        "browser.search.order.1" = "DuckDuckGo";
-
-        "browser.newtabpage.activity-stream.showSponsored" = false;
-        # "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.newtabpage.activity-stream.feeds.snippets" = false;
-      };
-
-      search = {
-        force = true;
-        default = "DuckDuckGo";
-        order = [ "DuckDuckGo" "Nix Packages" "Google" ];
-        engines = {
-          "Nix Packages" = {
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
-            icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
-          };
-          "Bing".metaData.hidden = true;
-          "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
-        };
-      };
-
-      # extensions = with inputs.firefox-addons; [
-      #   ublock-origin
-      #   bitwarden
-      #   simple-tab-groups
-      #   # languagetool  # TODO: Requires unfree packages allowed
-      # ];
-    };
-  };
 }
