@@ -126,12 +126,12 @@
         };
       };
 
-      extensions = with inputs.firefox-addons; [
-        ublock-origin
-        bitwarden
-        simple-tab-groups
-        # languagetool  # TODO: Requires unfree packages allowed
-      ];
+      # extensions = with inputs.firefox-addons; [
+      #   ublock-origin
+      #   bitwarden
+      #   simple-tab-groups
+      #   # languagetool  # TODO: Requires unfree packages allowed
+      # ];
     };
   };
 }
