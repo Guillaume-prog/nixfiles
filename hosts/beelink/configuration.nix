@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
@@ -89,14 +89,12 @@
     isNormalUser = true;
     description = "Guillaume";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.guillaume = import ./home.nix;
+    # backupFileExtension = "backup";
   };
 
   # Enable automatic login for the user.
@@ -107,9 +105,6 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -117,10 +112,6 @@
   #  wget
     vim
     git
-
-    vscode
-    discord
-    prismlauncher
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
