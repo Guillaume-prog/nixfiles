@@ -9,10 +9,15 @@ in
     profiles.guillaume = {
 
       extensions = with ff-addons; [
-        ublock-origin
-        bitwarden
         simple-tab-groups
-        # languagetool  # TODO: Requires unfree packages allowed
+        # languagetool
+        
+        bitwarden
+
+        ublock-origin
+        i-dont-care-about-cookies
+        youtube-shorts-block
+        # cookie-autodelete
       ];
       
       bookmarks = {};
