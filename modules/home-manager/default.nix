@@ -5,7 +5,7 @@
     ./git.nix
     ./firefox
     ./desktop
-    ./gaming
+    ./gaming.nix
     ./bash.nix
     ./vscode.nix
   ];
