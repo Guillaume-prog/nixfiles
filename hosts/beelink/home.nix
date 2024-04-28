@@ -26,6 +26,7 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
+    "beeper"
     "steam"
     "steam-original"
     "languagetool-8.6.0"
@@ -38,6 +39,7 @@
     alejandra
 
     discord
+    beeper
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
