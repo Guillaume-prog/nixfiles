@@ -1,6 +1,7 @@
 {pkgs, lib, inputs, ...}: 
 let
   ff-addons = inputs.firefox-addons.packages.${pkgs.system};
+  defaultSearchEngine = "DuckDuckGo";
 in
 {
 
@@ -19,8 +20,6 @@ in
         youtube-shorts-block
         # cookie-autodelete
       ];
-      
-      bookmarks = {};
 
       settings = {
         "browser.disableResetPrompt" = true;
@@ -33,6 +32,9 @@ in
         "browser.bookmarks.addedImportButton" = false;
 
         # homepage
+        "browser.search.defaultenginename" = defaultSearchEngine;
+        "browser.search.order.1" = defaultSearchEngine;
+
         "browser.startup.homepage" = "https://start.duckduckgo.com";
 
         # newtab config
@@ -52,6 +54,37 @@ in
         # topbar customisation
         "browser.uiCustomization.state" = lib.importJSON ./firefox-ui.json;
       };
+
+      search = {
+            force = true;
+            default = defaultSearchEngine;
+            order = [ defaultSearchEngine "Nix Packages" "NixOS Wiki" ];
+            engines = {
+              "Nix Packages" = {
+                urls = [{
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    { name = "type"; value = "packages"; }
+                    { name = "query"; value = "{searchTerms}"; }
+                  ];
+                }];
+                icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = [ "@np" ];
+              };
+              "NixOS Wiki" = {
+                urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000; # every day
+                definedAliases = [ "@nw" ];
+              };
+
+              "Google".metaData.hidden = true;
+              "Bing".metaData.hidden = true;
+              "eBay".metaData.hidden = true;
+              "Wikipedia".metaData.hidden = true;
+            };
+          };
+
     };
   };
 
