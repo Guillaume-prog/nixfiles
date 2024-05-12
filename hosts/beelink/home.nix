@@ -6,10 +6,6 @@
     ../../modules/home-manager
   ];
 
-  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-  #   "languagetool-8.6.0"
-  # ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "guillaume";
@@ -40,6 +36,8 @@
 
     discord
     beeper
+
+    steam
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
