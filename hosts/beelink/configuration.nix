@@ -14,6 +14,7 @@
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true; # Needs removing !!!
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -37,9 +38,6 @@
   services.xserver.desktopManager.gnome.enable = true;
   
   services.xserver.desktopManager.wallpaper.mode = "fill";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
