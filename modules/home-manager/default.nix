@@ -6,7 +6,6 @@
     ./firefox
     ./desktop
     ./gaming.nix
-    ./bash.nix
     ./vscode.nix
   ];
 }
