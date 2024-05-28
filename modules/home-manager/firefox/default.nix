@@ -11,14 +11,17 @@ in
 
       extensions = with ff-addons; [
         simple-tab-groups
-        # languagetool
+        auto-tab-discard
         
         bitwarden
+        darkreader
+        # languagetool
 
         ublock-origin
+        cookie-autodelete
         i-dont-care-about-cookies
+        
         youtube-shorts-block
-        # cookie-autodelete
       ];
 
       settings = {
@@ -64,13 +67,24 @@ in
                 urls = [{
                   template = "https://search.nixos.org/packages";
                   params = [
-                    { name = "type"; value = "packages"; }
                     { name = "query"; value = "{searchTerms}"; }
                   ];
                 }];
                 icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 definedAliases = [ "@np" ];
               };
+
+              "Nix Options" = {
+                urls = [{
+                  template = "https://search.nixos.org/options";
+                  params = [
+                    { name = "query"; value = "{searchTerms}"; }
+                  ];
+                }];
+                icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = [ "@no" ];
+              };
+
               "NixOS Wiki" = {
                 urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
                 iconUpdateURL = "https://nixos.wiki/favicon.png";
