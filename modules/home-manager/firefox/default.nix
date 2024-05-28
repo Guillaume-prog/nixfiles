@@ -61,7 +61,7 @@ in
       search = {
             force = true;
             default = defaultSearchEngine;
-            order = [ defaultSearchEngine "Nix Packages" "NixOS Wiki" ];
+            order = [ defaultSearchEngine "Nix Packages" "Nix Options" "NixOS Wiki" ];
             engines = {
               "Nix Packages" = {
                 urls = [{
@@ -95,7 +95,7 @@ in
               "Google".metaData.hidden = true;
               "Bing".metaData.hidden = true;
               "eBay".metaData.hidden = true;
-              "Wikipedia".metaData.hidden = true;
+              "Wikipedia (en)".metaData.hidden = true;
             };
           };
 
