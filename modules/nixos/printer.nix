@@ -1,8 +1,4 @@
-{ pkgs, lib, ... }: {
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "cnijfilter2"
-  ];
+{ pkgs, ... }: {
 
   services.avahi = {
     enable = true;

@@ -2,24 +2,27 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, ... }:
+{ inputs, pkgs, unstable-pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
 
-      ../../modules/nixos
-    ];
+    ../../modules/nixos
+  ];
 
-    nixpkgs.config.allowUnfree = true; # Needs removing !!!
-    networking.hostName = "beelink"; # Define your hostname.
+  networking.hostName = "beelink"; # Define your hostname.
 
-    home-manager = {
-      extraSpecialArgs = { inherit inputs; };
-      users.guillaume = import ./home.nix;
-      # backupFileExtension = "backup";
-    };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs pkgs unstable-pkgs; };
+    users.guillaume = import ./home.nix;
+    # backupFileExtension = "backup";
+  };
+
+  # Bluetooth config
+
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
 }

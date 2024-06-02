@@ -18,14 +18,33 @@
 
   outputs = { self, nixpkgs, ... }@inputs: 
   let
-    unstable-pkgs = import inputs.nixpkgs-unstable { system = "x86_64-linux"; };
+    system = "x86_64-linux";
+
+    allowed-unfree-packages = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+      "discord"
+      "beeper"
+
+      "steam"
+      "steam-original"
+      "steam-run"
+
+      "languagetool"
+      "cnijfilter2"
+    ];
+
+    pkgs = import nixpkgs { 
+      inherit system; 
+      config.allowUnfreePredicate = allowed-unfree-packages;
+    };
+
+    unstable-pkgs = import inputs.nixpkgs-unstable { 
+      inherit system; 
+      config.allowUnfreePredicate = allowed-unfree-packages;
+    };
   in {
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs unstable-pkgs; };
-      modules = [
-        ./hosts/beelink/configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
+      specialArgs = { inherit inputs pkgs unstable-pkgs; };
+      modules = [ ./hosts/beelink/configuration.nix ];
     };
   };
 }
