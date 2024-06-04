@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs, unstable-pkgs, ... }:
+{ inputs, pkgs, unstable-pkgs, config, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -25,4 +25,5 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
+  bootloader.theme = "catpuccin-macchiato";
 }

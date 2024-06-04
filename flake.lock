@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "catpuccin-grub": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709858112,
+        "narHash": "sha256-e8XFWebd/GyX44WQI06Cx6sOduCZc5z7/YhweVQGMGY=",
+        "owner": "catppuccin",
+        "repo": "grub",
+        "rev": "88f6124757331fd3a37c8a69473021389b7663ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "grub",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -93,10 +109,28 @@
     },
     "root": {
       "inputs": {
+        "catpuccin-grub": "catpuccin-grub",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "sleek-grub": "sleek-grub"
+      }
+    },
+    "sleek-grub": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704044352,
+        "narHash": "sha256-bof/4Ab9XmhlG7kRQfVGzsyClAW2bctHn4kdcIJox9o=",
+        "owner": "sandesh236",
+        "repo": "sleek--themes",
+        "rev": "0a680163a0711c4ed23d5d3b1b9a0f67115cb6d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sandesh236",
+        "repo": "sleek--themes",
+        "type": "github"
       }
     }
   },

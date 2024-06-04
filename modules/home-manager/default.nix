@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../unfree.nix
     ./git.nix
     ./firefox
     ./desktop

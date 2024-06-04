@@ -14,6 +14,16 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"; 
       inputs.nixpkgs.follows = "nixpkgs"; 
     };
+
+    sleek-grub = {
+      url = "github:sandesh236/sleek--themes";
+      flake = false;
+    };
+
+    catpuccin-grub = {
+      url = "github:catppuccin/grub";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
