@@ -1,10 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, unstable-pkgs, ... }: {
 
-  # TODO: move nil installation from home.nix to here
+  home.packages = with pkgs; [
+    nil # Nix Language server
+  ];
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = unstable-pkgs.vscodium;
 
     enableUpdateCheck = true;
     enableExtensionUpdateCheck = true;
