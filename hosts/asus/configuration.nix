@@ -12,7 +12,7 @@
     ../../modules/nixos
   ];
 
-  networking.hostName = "beelink"; # Define your hostname.
+  networking.hostName = "asus"; # Define your hostname.
 
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs unstable-pkgs; };
@@ -29,7 +29,6 @@
 
   # Keyboard layout
   keyboard.layout = {
-    layout = "gb";
-    variant = "extd";
+    layout = "fr";
   };
 }
