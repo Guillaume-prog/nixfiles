@@ -17,7 +17,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = (with pkgs; [
-    nil # Nix Language server
     alejandra # Nix formatter
 
     vesktop

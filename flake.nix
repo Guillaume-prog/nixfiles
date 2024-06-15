@@ -52,9 +52,18 @@
       config.allowUnfreePredicate = allowed-unfree-packages;
     };
   in {
-    nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs pkgs unstable-pkgs; };
-      modules = [ ./hosts/beelink/configuration.nix ];
+    nixosConfigurations = {
+
+      beelink = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs pkgs unstable-pkgs; };
+        modules = [ ./hosts/beelink/configuration.nix ];
+      };
+
+      asus = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs pkgs unstable-pkgs; };
+        modules = [ ./hosts/asus/configuration.nix ];
+      };
+
     };
   };
 }
