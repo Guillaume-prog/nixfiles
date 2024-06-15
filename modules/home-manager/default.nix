@@ -20,7 +20,7 @@
     nil # Nix Language server
     alejandra # Nix formatter
 
-    discord
+    vesktop
   ]) ++ (with unstable-pkgs; [
     beeper
   ]);
