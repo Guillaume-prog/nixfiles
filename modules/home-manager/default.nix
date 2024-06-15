@@ -2,9 +2,9 @@
 
 {
   imports = [
+    ../desktop/gnome/home
     ./git.nix
     ./firefox
-    ./desktop
     ./gaming.nix
     ./vscode.nix
   ];

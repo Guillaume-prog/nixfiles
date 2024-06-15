@@ -1,6 +1,7 @@
 { pkgs, ... }: {
 
   imports = [
+    ../desktop/gnome/configuration.nix
     ./bootloader.nix
     ./localisation.nix
     ./keyboard.nix
@@ -15,15 +16,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  
-  services.xserver.desktopManager.wallpaper.mode = "fill";
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -57,6 +49,7 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    vlc
   ];
 
   # This value determines the NixOS release from which the default

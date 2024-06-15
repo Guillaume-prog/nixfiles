@@ -56,6 +56,9 @@ in
 
         # topbar customisation
         "browser.uiCustomization.state" = lib.importJSON ./firefox-ui.json;
+
+        # Auto allow extensions i think ???
+        "extensions.InstallTriggerImpl.enabled" = true;
       };
 
       search = {

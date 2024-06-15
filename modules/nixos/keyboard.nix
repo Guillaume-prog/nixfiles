@@ -3,8 +3,8 @@ with lib;
 let
   cfg = config.keyboard;
 in {
-  options = {
-    keyboard.layout = mkOption {
+  options.keyboard = {
+    layout = mkOption {
       type = types.anything;
       description = "Which layout to use for typing";
     };
