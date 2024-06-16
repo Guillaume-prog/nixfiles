@@ -50,7 +50,15 @@
     vim
     git
     vlc
+
+    mlocate
   ];
+
+  services.locate = {
+    enable = true;
+    package = pkgs.mlocate;
+    localuser = null;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
