@@ -2,7 +2,6 @@
 
 let 
   themePaths = {
-    sleek-dark = "${inputs.sleek-grub}/Sleek theme-dark/sleek";
     catpuccin-macchiato = "${inputs.catpuccin-grub}/src/catppuccin-macchiato-grub-theme";
   };
 

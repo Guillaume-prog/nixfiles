@@ -15,11 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs"; 
     };
 
-    sleek-grub = {
-      url = "github:sandesh236/sleek--themes";
-      flake = false;
-    };
-
     catpuccin-grub = {
       url = "github:catppuccin/grub";
       flake = false;
