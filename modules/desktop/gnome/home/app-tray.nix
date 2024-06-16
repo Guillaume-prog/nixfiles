@@ -50,9 +50,13 @@ in
     };
 
     "org/gnome/desktop/app-folders/folders/System" = {
-      apps = [ "org.gnome.Console.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Settings.desktop" "gnome-system-monitor.desktop" "org.gnome.tweaks.desktop" ];
+      apps = [ "org.gnome.Console.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Settings.desktop" "gnome-system-monitor.desktop" "org.gnome.tweaks.desktop" "com.mattjakeman.ExtensionManager.desktop" ];
       name = "System";
       translate = false;
     };
+
+    # [org/gnome/desktop/app-folders/folders/a9ef3f8f-65fe-4aeb-8317-d011fe22c4f0]
+    # apps=['Celeste.desktop', 'Hollow Knight.desktop', 'Portal.desktop', 'Undertale.desktop']
+    # name='Games'
   };
 }

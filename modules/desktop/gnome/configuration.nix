@@ -11,6 +11,7 @@
 
   environment.systemPackages = (with pkgs; [
     gnome-console
+    gnome-extension-manager
     loupe # image viewer
     evince # document viewer
     snapshot # camera
@@ -43,6 +44,7 @@
     gnome-initial-setup
     gnome-maps
     gnome-music
+    gnome-shell-extensions
     gnome-software
     gnome-weather
     hitori # sudoku game
