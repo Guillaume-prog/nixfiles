@@ -5,6 +5,7 @@
     ./background.nix
     ./extensions.nix
     ./shortcuts.nix
+    ./trackpad.nix
   ];
 
 }
