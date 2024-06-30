@@ -4,6 +4,7 @@
     ../desktop/gnome/configuration.nix
     ./bootloader.nix
     ./localisation.nix
+    ./fonts.nix
     ./keyboard.nix
     ./printer.nix
     ./steam.nix
