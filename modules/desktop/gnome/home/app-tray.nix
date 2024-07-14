@@ -50,7 +50,7 @@ in
     };
 
     "org/gnome/desktop/app-folders/folders/System" = {
-      apps = ["org.gnome.Console.desktop" "org.gnome.DiskUtility.desktop" "com.mattjakeman.ExtensionManager.desktop" "org.gnome.Settings.desktop" "org.gnome.SystemMonitor.desktop" "org.gnome.tweaks.desktop"];
+      apps = [ "Alacritty.desktop" "org.gnome.DiskUtility.desktop" "com.mattjakeman.ExtensionManager.desktop" "org.gnome.Settings.desktop" "org.gnome.SystemMonitor.desktop" "org.gnome.tweaks.desktop" ];
       name = "System";
       translate = false;
     };

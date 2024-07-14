@@ -17,10 +17,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = (with pkgs; [
+    alacritty
     alejandra # Nix formatter
-
-    vesktop
     anydesk
+    vesktop
   ]) ++ (with unstable-pkgs; [
     beeper
   ]);

@@ -17,7 +17,6 @@
 
   environment.systemPackages = (with pkgs; [
     gedit
-    gnome-console
     gnome-extension-manager
     loupe # image viewer
     evince # document viewer
@@ -37,6 +36,7 @@
   documentation.nixos.enable = false;
 
   environment.gnome.excludePackages = (with pkgs; [
+    gnome-console
     gnome-photos
     gnome-tour
     gnome-text-editor
