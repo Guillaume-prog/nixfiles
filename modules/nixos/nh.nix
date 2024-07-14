@@ -1,7 +1,4 @@
-{ pkgs, unstable-pkgs, inputs, ... }: {
-  
-  # Hotfix until 24.05 comes out
-  imports = ["${inputs.nixpkgs-unstable}/nixos/modules/programs/nh.nix"];
+{ pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
     nix-output-monitor
@@ -10,7 +7,6 @@
 
   programs.nh = {
     enable = true;
-    package = unstable-pkgs.nh;
     flake = "/home/guillaume/nixfiles";
 
     clean.enable = true;

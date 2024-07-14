@@ -10,6 +10,7 @@
   # Desktop packages to include
 
   environment.systemPackages = (with pkgs; [
+    gedit
     gnome-console
     gnome-extension-manager
     loupe # image viewer
@@ -17,7 +18,6 @@
     snapshot # camera
     dconf2nix # useful for parsing dconf
   ]) ++ (with pkgs.gnome; [
-    gedit
     gnome-calculator
     gnome-calendar
     gnome-tweaks
