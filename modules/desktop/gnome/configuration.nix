@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -6,6 +6,12 @@
 
   # Enable dconf to configure gnome in home-manager
   programs.dconf.enable = true;
+
+  # enable bluetooth experimental settings for bluetooth gnome extension
+  systemd.services.bluetooth.serviceConfig.ExecStart = lib.mkForce [
+    "" # extra line to work around systemd's list concatenation shenanigans
+    "${pkgs.bluez}/libexec/bluetooth/bluetoothd -f /etc/bluetooth/main.conf --experimental"
+  ];
 
   # Desktop packages to include
 
