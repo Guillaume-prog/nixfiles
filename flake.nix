@@ -35,6 +35,12 @@
 
       "languagetool"
       "cnijfilter2"
+
+      "anydesk"
+      "anydesk-6.3.2"
+
+      "languagetool"
+      "languagetool-8.6.0"
     ];
 
     pkgs = import nixpkgs { 

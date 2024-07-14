@@ -20,6 +20,7 @@
     alejandra # Nix formatter
 
     vesktop
+    anydesk
   ]) ++ (with unstable-pkgs; [
     beeper
   ]);

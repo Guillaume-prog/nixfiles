@@ -52,6 +52,7 @@
     git
     vlc
 
+    nmap
     mlocate
   ];
 
