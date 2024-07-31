@@ -44,7 +44,7 @@ in
     };
 
     "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [ "org.gnome.FileRoller.desktop" "org.gnome.Connections.desktop" "org.gnome.baobab.desktop" "org.gnome.Extensions.desktop" "org.gnome.font-viewer.desktop" "org.gnome.Logs.desktop" "cups.desktop" "org.gnome.seahorse.Application.desktop" ];
+      apps = [ "AnyDesk.desktop" "org.gnome.FileRoller.desktop" "org.gnome.Connections.desktop" "org.gnome.baobab.desktop" "org.gnome.Extensions.desktop" "org.gnome.font-viewer.desktop" "org.gnome.Logs.desktop" "cups.desktop" "org.gnome.seahorse.Application.desktop" ];
       name = "Utilities";
       translate = false;
     };
