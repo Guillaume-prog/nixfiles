@@ -23,6 +23,9 @@
       # Theming
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
+
+      # Git graph
+      mhutchie.git-graph
     ];
 
     userSettings = {
