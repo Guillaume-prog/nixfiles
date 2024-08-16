@@ -57,6 +57,10 @@
     mlocate
   ];
 
+  environment.interactiveShellInit = ''
+    alias nx-edit="codium ~/nixfiles"
+  '';
+
   services.locate = {
     enable = true;
     package = pkgs.mlocate;

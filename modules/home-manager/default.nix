@@ -3,6 +3,7 @@
 {
   imports = [
     ../desktop/gnome/home
+    ./audio.nix
     ./git.nix
     ./firefox
     ./gaming.nix
@@ -22,6 +23,7 @@
     anydesk
     vesktop
   ]) ++ (with unstable-pkgs; [
+    anytype
     beeper
   ]);
 

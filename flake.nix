@@ -41,16 +41,21 @@
 
       "languagetool"
       "languagetool-8.6.0"
+
+      "anytype"
+      "Anytype-0.41.1"
     ];
 
     pkgs = import nixpkgs { 
       inherit system; 
-      config.allowUnfreePredicate = allowed-unfree-packages;
+      config.allowUnfree = true;
+      # config.allowUnfreePredicate = allowed-unfree-packages;
     };
 
     unstable-pkgs = import inputs.nixpkgs-unstable { 
       inherit system; 
-      config.allowUnfreePredicate = allowed-unfree-packages;
+      config.allowUnfree = true;
+      # config.allowUnfreePredicate = allowed-unfree-packages;
     };
   in {
     nixosConfigurations = {
