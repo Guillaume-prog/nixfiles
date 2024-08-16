@@ -8,6 +8,7 @@
     ./keyboard.nix
     ./printer.nix
     ./steam.nix
+    ./syncthing.nix
     ./nh.nix
   ];
 
