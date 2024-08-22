@@ -1,6 +1,5 @@
 {pkgs, lib, inputs, ...}: 
 let
-  ff-addons = inputs.firefox-addons.packages.${pkgs.system};
   defaultSearchEngine = "DuckDuckGo";
 in
 {
@@ -9,13 +8,13 @@ in
     enable = true;
     profiles.guillaume = {
 
-      extensions = with ff-addons; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         simple-tab-groups
         auto-tab-discard
         
         bitwarden
         darkreader
-        # languagetool
+        languagetool
 
         ublock-origin
         cookie-autodelete

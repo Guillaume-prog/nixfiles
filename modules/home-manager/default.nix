@@ -22,9 +22,10 @@
     alejandra # Nix formatter
     anydesk
     vesktop
+    beeper
   ]) ++ (with unstable-pkgs; [
     anytype
-    beeper
+    # beeper
   ]);
 
 

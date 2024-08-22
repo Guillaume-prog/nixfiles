@@ -59,6 +59,7 @@
 
   environment.interactiveShellInit = ''
     alias nx-edit="codium ~/nixfiles"
+    alias nx-update="pushd ~/nixfiles;sudo nix flake update; nh os switch;popd"
   '';
 
   services.locate = {

@@ -4,15 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/nur";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    firefox-addons = { 
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"; 
-      inputs.nixpkgs.follows = "nixpkgs"; 
     };
 
     catpuccin-grub = {
@@ -48,6 +44,9 @@
 
     pkgs = import nixpkgs { 
       inherit system; 
+      overlays = [
+        inputs.nur.overlay
+      ];
       config.allowUnfree = true;
       # config.allowUnfreePredicate = allowed-unfree-packages;
     };
