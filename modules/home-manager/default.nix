@@ -21,6 +21,7 @@
     alacritty
     alejandra # Nix formatter
     anydesk
+    fragments
     vesktop
     beeper
   ]) ++ (with unstable-pkgs; [
