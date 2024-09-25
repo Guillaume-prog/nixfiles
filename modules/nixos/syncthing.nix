@@ -12,9 +12,9 @@ in {
     overrideDevices = true;     # overrides any devices added or deleted through the WebUI
     overrideFolders = true;     # overrides any folders added or deleted through the WebUI
 
-    options.urAccepted = -1; # Refuse anonymous usage data
-
     settings = {
+      options.urAccepted = -1; # Refuse anonymous usage data
+
       devices = {
         "Phone" = { id = "M25ZJ2M-M7WCPVM-5EVFGSQ-VBGDCH3-HODXVMM-YZRTWST-JZE3SFT-IE2NLAO"; };
         "Tablet" = { id = "R7ZG6WQ-FWO37NN-HTVBBGY-TIZWEFR-7LVS2AI-UG6RQZY-OF7AWEN-WM25NAZ"; };
