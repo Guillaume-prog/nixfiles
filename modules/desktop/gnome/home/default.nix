@@ -1,7 +1,7 @@
 { ... }: {
   
   imports = [
-    ./app-tray.nix
+    ./app-layout
     ./background.nix
     ./extensions.nix
     ./shortcuts.nix
