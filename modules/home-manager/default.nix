@@ -8,6 +8,7 @@
     ./firefox
     ./gaming.nix
     ./vscode.nix
+    ./ssh.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -21,6 +22,7 @@
     alacritty
     alejandra # Nix formatter
     anydesk
+    cura
     fragments
     vesktop
     beeper
