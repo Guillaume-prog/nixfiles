@@ -12,12 +12,14 @@
     ./nh.nix
   ];
 
-  # services.x2goserver.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # enable i2c
+  hardware.i2c.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -37,21 +39,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "guillaume";
-  };
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
-
   environment.systemPackages = with pkgs; [
     git
     vlc
-
     nmap
     mlocate
   ];

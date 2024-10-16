@@ -4,12 +4,13 @@
     appindicator
     bluetooth-battery-meter
     blur-my-shell
-    # gsconnect
+    brightness-control-using-ddcutil
     user-themes
     vitals
-  ]) ++ [
-    pkgs.bibata-cursors
-  ];
+  ]) ++ (with pkgs; [
+    bibata-cursors
+    ddcutil
+  ]);
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -17,7 +18,14 @@
     };
 
     "org/gnome/shell" = {
-      enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" "Bluetooth-Battery-Meter@maniacx.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "blur-my-shell@aunetx" ];
+      enabled-extensions = [ 
+        "appindicatorsupport@rgcjonas.gmail.com" 
+        "Bluetooth-Battery-Meter@maniacx.github.com" 
+        "user-theme@gnome-shell-extensions.gcampax.github.com" 
+        "Vitals@CoreCoding.com" 
+        "blur-my-shell@aunetx"
+        "display-brightness-ddcutil@themightydeity.github.com"
+      ];
     };
 
     "org/gnome/shell/extensions/vitals" = {
@@ -30,6 +38,13 @@
 
     "org/gnome/shell/extensions/Bluetooth-Battery-Meter" = {
       enable-battery-level-text = true;
+    };
+
+    "org/gnome/shell/extensions/display-brightness-ddcutil" = {
+      button-location = 1;
+      only-all-slider = true;
+      show-display-name = false;
+      ddcutil-binary-path = "${pkgs.ddcutil}/bin/ddcutil";
     };
 
   };
