@@ -11,6 +11,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    wfetch = {
+      url = "github:iynaix/wfetch";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    alacritty-themes = {
+      url = "github:alacritty/alacritty-theme";
+      flake = false;
+    };
+
     catpuccin-grub = {
       url = "github:catppuccin/grub";
       flake = false;

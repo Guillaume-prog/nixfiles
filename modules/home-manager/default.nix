@@ -3,6 +3,7 @@
 {
   imports = [
     ../desktop/gnome/home
+    ./terminal.nix
     ./audio.nix
     ./git.nix
     ./firefox
@@ -19,7 +20,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = (with pkgs; [
-    alacritty
     alejandra # Nix formatter
     anydesk
     cura
