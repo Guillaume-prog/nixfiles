@@ -8,9 +8,9 @@
     enable = true;
     package = unstable-pkgs.vscodium;
 
-    enableUpdateCheck = true;
-    enableExtensionUpdateCheck = true;
-    # mutableExtensionsDir = true;
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
+    mutableExtensionsDir = false;
 
     # keep extensions minimal, additionnal extensions will be installed per project
     extensions = with pkgs.vscode-extensions; [
@@ -23,9 +23,6 @@
       # Theming
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
-
-      # Git graph
-      mhutchie.git-graph
     ];
 
     userSettings = {

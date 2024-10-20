@@ -17,7 +17,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs unstable-pkgs; };
     users.guillaume = import ./home.nix;
-    # backupFileExtension = "backup";
+    backupFileExtension = "backup";
   };
 
   # Bluetooth config
