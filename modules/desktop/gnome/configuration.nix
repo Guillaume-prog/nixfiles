@@ -7,6 +7,9 @@
   # Enable dconf to configure gnome in home-manager
   programs.dconf.enable = true;
 
+  # enable i2c for brightness control
+  hardware.i2c.enable = true;
+
   # enable bluetooth experimental settings for bluetooth gnome extension
   systemd.services.bluetooth.serviceConfig.ExecStart = lib.mkForce [
     "" # extra line to work around systemd's list concatenation shenanigans

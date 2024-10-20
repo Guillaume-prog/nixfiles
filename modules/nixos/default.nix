@@ -18,9 +18,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # enable i2c
-  hardware.i2c.enable = true;
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
