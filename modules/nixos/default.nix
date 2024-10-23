@@ -1,6 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, unstable-pkgs, ... }: {
 
   imports = [
+    inputs.home-manager.nixosModules.default
     ../desktop/gnome/configuration.nix
     ./bootloader.nix
     ./localisation.nix
@@ -15,8 +16,17 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs pkgs unstable-pkgs; };
+    backupFileExtension = "backup";
+  };
+
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Bluetooth config
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Enable sound with pipewire.
   sound.enable = true;
