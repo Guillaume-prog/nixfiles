@@ -1,11 +1,10 @@
 { lib, config, ... }:
-with lib;
 let
-  cfg = strings.splitString "-" config.keyboard.layout;
-  cfg_layout = elemAt cfg 0;
-  cfg_variant = if (1 < builtins.length cfg) then (elemAt cfg 1) else "";
+  cfg = lib.strings.splitString "-" config.keyboard.layout;
+  cfg_layout = lib.elemAt cfg 0;
+  cfg_variant = if (1 < builtins.length cfg) then (lib.elemAt cfg 1) else "";
 in {
-  options.keyboard = {
+  options.keyboard = with lib; {
     layout = mkOption {
       type = types.str;
       description = "Which layout to use for typing";

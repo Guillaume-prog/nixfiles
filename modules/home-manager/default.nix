@@ -12,15 +12,9 @@
     ./ssh.nix
   ];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "guillaume";
-  home.homeDirectory = "/home/guillaume";
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = (with pkgs; [
-    alejandra # Nix formatter
     anydesk
     cura
     fragments

@@ -1,4 +1,4 @@
-{ pkgs, inputs, unstable-pkgs, ... }: {
+{ pkgs, inputs, unstable-pkgs, config, ... }: {
 
   imports = [
     inputs.home-manager.nixosModules.default
@@ -11,13 +11,18 @@
     ./steam.nix
     ./syncthing.nix
     ./nh.nix
+    ./users.nix
   ];
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs pkgs unstable-pkgs; };
+    extraSpecialArgs = { 
+      inherit inputs pkgs unstable-pkgs; 
+      hostname = config.networking.hostName; 
+    };
     backupFileExtension = "backup";
   };
 

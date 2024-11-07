@@ -1,7 +1,11 @@
-{ pkgs, unstable-pkgs, ... }: {
+{ pkgs, unstable-pkgs, hostname, ... }: 
+let
+  flake-path = "(builtins.getFlake \"/home/guillaume/nixfiles\")";
+in {
 
   home.packages = with pkgs; [
-    nil # Nix Language server
+    alejandra # Nix formatter
+    nixd # Nix LSP
   ];
 
   programs.vscode = {
@@ -30,9 +34,21 @@
       "workbench.iconTheme" = "catppuccin-macchiato";
       "workbench.colorTheme" = "Catppuccin Macchiato";
 
-      # Nix LSP
+      # Nix config
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
+      "nix.serverPath" = "nixd";
+
+      "nixpkgs" = {
+        "expr" = "import (builtins.getFlake ${flake-path}).inputs.nixpkgs {}";
+      };
+
+      "formatting" = {
+        "command" = [ "alejandra" ];
+      };
+
+      "options" = {
+        "expr" = "(builtins.getFlake ${flake-path}).nixosConfigurations.${hostname}.options";
+      };
     };
   };
 
