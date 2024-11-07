@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, flake-path, ... }: {
 
   environment.systemPackages = with pkgs; [
     nix-output-monitor
@@ -7,7 +7,7 @@
 
   programs.nh = {
     enable = true;
-    flake = "/home/guillaume/nixfiles";
+    flake = flake-path;
 
     clean.enable = true;
     clean.extraArgs = "--keep-since 7d --keep 5";

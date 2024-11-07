@@ -27,30 +27,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: 
+  outputs = { nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
-
-    allowed-unfree-packages = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
-      "discord"
-      "beeper"
-
-      "steam"
-      "steam-original"
-      "steam-run"
-
-      "languagetool"
-      "cnijfilter2"
-
-      "anydesk"
-      "anydesk-6.3.2"
-
-      "languagetool"
-      "languagetool-8.6.0"
-
-      "anytype"
-      "Anytype-0.41.1"
-    ];
+    flake-path = "/nixflakes";
 
     pkgs = import nixpkgs { 
       inherit system; 
@@ -58,27 +38,21 @@
         inputs.nur.overlay
       ];
       config.allowUnfree = true;
-      # config.allowUnfreePredicate = allowed-unfree-packages;
     };
 
     unstable-pkgs = import inputs.nixpkgs-unstable { 
       inherit system; 
       config.allowUnfree = true;
-      # config.allowUnfreePredicate = allowed-unfree-packages;
+    };
+
+    create-system = name: nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs pkgs unstable-pkgs flake-path; };
+      modules = [ ./hosts/${name}/configuration.nix ];
     };
   in {
     nixosConfigurations = {
-
-      beelink = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgs unstable-pkgs; };
-        modules = [ ./hosts/beelink/configuration.nix ];
-      };
-
-      asus = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgs unstable-pkgs; };
-        modules = [ ./hosts/asus/configuration.nix ];
-      };
-
+      beelink = create-system "beelink";
+      asus = create-system "asus";
     };
   };
 }

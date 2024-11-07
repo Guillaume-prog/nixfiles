@@ -1,7 +1,4 @@
-{ pkgs, unstable-pkgs, hostname, ... }: 
-let
-  flake-path = "(builtins.getFlake \"/home/guillaume/nixfiles\")";
-in {
+{ pkgs, unstable-pkgs, hostname, flake-path, ... }: {
 
   home.packages = with pkgs; [
     alejandra # Nix formatter

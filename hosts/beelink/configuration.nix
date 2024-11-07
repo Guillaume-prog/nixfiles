@@ -14,7 +14,10 @@
     home-config = ./home.guillaume.nix;
   };
 
-
+  user.lilou = {
+    enable = true;
+    home-config = ./home.lilou.nix;
+  };
 
   # Keyboard layout
   keyboard.layout = "gb-extd";

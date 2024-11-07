@@ -1,4 +1,4 @@
-{ pkgs, inputs, unstable-pkgs, config, ... }: {
+{ pkgs, inputs, unstable-pkgs, flake-path, config, ... }: {
 
   imports = [
     inputs.home-manager.nixosModules.default
@@ -20,7 +20,7 @@
 
   home-manager = {
     extraSpecialArgs = { 
-      inherit inputs pkgs unstable-pkgs; 
+      inherit inputs pkgs unstable-pkgs flake-path; 
       hostname = config.networking.hostName; 
     };
     backupFileExtension = "backup";
