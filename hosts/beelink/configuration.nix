@@ -25,4 +25,7 @@
   # Support for beelink bluetooth chip
   boot.initrd.kernelModules = [ "btintel" ];
 
+  # Allow compiling for RPI
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
 }
