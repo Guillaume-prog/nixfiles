@@ -30,7 +30,7 @@
   outputs = { nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
-    flake-path = "/nixflakes";
+    flake-path = "/nixfiles";
 
     pkgs = import nixpkgs { 
       inherit system; 

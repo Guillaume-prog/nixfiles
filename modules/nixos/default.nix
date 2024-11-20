@@ -12,6 +12,7 @@
     ./syncthing.nix
     ./nh.nix
     ./users.nix
+    ./screen-share.nix
   ];
 
 
@@ -59,8 +60,8 @@
   ];
 
   environment.interactiveShellInit = ''
-    alias nx-edit="codium ~/nixfiles"
-    alias nx-update="pushd ~/nixfiles;sudo nix flake update; nh os switch;popd"
+    alias nx-edit="codium ${flake-path}"
+    alias nx-update="pushd ${flake-path};sudo nix flake update; nh os switch;popd"
   '';
 
   services.locate = {
