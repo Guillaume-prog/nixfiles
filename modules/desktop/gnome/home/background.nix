@@ -1,20 +1,19 @@
 { lib, config, ... }: 
-with lib;
 let
   cfg = config.desktop.gnome;
 in
 {
-  options.desktop.gnome = {
+  options.desktop.gnome = with lib; {
     wallpaper.image = mkOption {
-      type = lib.types.anything;
+      type = types.anything;
     };
 
     wallpaper.primary = mkOption {
-      type = lib.types.str;
+      type = types.str;
     };
 
     wallpaper.secondary = mkOption {
-      type = lib.types.str;
+      type = types.str;
     };
 
   };

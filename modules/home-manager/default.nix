@@ -1,4 +1,4 @@
-{ pkgs, unstable-pkgs, ... }:
+{ pkgs, unstable-pkgs, lib, config, ... }:
 
 {
   imports = [
@@ -12,30 +12,47 @@
     ./ssh.nix
   ];
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = (with pkgs; [
-    anydesk
-    cura
-    fragments
-    vesktop
-    beeper
-  ]) ++ (with unstable-pkgs; [
-    anytype
-    # beeper
-  ]);
+  options.software = let
+    enableOpt = lib.mkOption {
+      type = lib.types.bool;
+      description = "Activate this piece of software";
+      default = false;
+    };
+  in {
+    anydesk.enable = enableOpt;
+    beeper.enable = enableOpt;
+    cura.enable = enableOpt;
+    fragments.enable = enableOpt;
+    
 
-  
-  
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+    discord.package = lib.mkOption {
+      type = lib.types.package;
+      description = "Which package to use for discord";
+    };
+  };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  config = let 
+    cfg = config.software;
+
+    optional-packages = list: lib.pipe list [
+      (builtins.filter (x: cfg.${x}.enable))
+      (builtins.map (x: pkgs.${x}))
+    ];
+  in {
+    home.packages = (optional-packages [
+      "anydesk"
+      "beeper"
+      "cura"
+      "fragments"
+    ]) ++ [
+      cfg.discord.package
+    ]  ++ (with unstable-pkgs; [
+      anytype
+    ]);
+
+    
+    
+    home.stateVersion = "23.11";
+    programs.home-manager.enable = true;
+  };
 }

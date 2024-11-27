@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 { 
   imports = [
@@ -15,4 +15,15 @@
     primary = "#06282D";
     secondary = "#000000";
   };
+
+  software = {
+    anydesk.enable = true;
+    beeper.enable = true;
+    cura.enable = true;
+    fragments.enable = true;
+
+    discord.package = pkgs.vesktop;
+  };
+
+  software.gaming.enable = true;
 }

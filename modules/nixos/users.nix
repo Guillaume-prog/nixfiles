@@ -3,15 +3,15 @@
 let 
   cfg = config.user;
 
-  user-options = with lib;{
-    enable = mkOption {
-      type = types.bool;
+  user-options = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Activate this user for this machine";
       default = false;
     };
 
-    home-config = mkOption {
-      type = types.path;
+    home-config = lib.mkOption {
+      type = lib.types.path;
       description = "Set home config";
       default = "";
     };

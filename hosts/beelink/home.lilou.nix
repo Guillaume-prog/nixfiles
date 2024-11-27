@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 { 
   imports = [
@@ -15,4 +15,6 @@
     primary = "#06282D";
     secondary = "#000000";
   };
+
+  software.discord.package = pkgs.discord;
 }
