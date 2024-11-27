@@ -1,7 +1,6 @@
 { ... }:
 
 {
-
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
@@ -11,12 +10,12 @@
 
   user.guillaume = {
     enable = true;
-    home-config = ./home.guillaume.nix;
+    home-config = ../../users/guillaume/home.nix;
   };
 
   user.lilou = {
     enable = true;
-    home-config = ./home.lilou.nix;
+    home-config = ../../users/lilou/home.nix;
   };
 
   # Keyboard layout

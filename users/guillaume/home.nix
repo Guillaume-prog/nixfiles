@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hostname, ... }:
 
 { 
   imports = [
@@ -11,7 +11,7 @@
   };
 
   desktop.gnome.wallpaper = {
-    image = ./assets/background.png;
+    image = ./background- + hostname + ".png";
     primary = "#06282D";
     secondary = "#000000";
   };

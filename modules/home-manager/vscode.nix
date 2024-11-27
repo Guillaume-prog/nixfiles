@@ -27,6 +27,9 @@
     ];
 
     userSettings = {
+      # Git
+      "git.confirmSync" = false;
+
       # Theming
       "workbench.iconTheme" = "catppuccin-macchiato";
       "workbench.colorTheme" = "Catppuccin Macchiato";

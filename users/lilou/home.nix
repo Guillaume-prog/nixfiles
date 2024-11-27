@@ -11,7 +11,7 @@
   };
 
   desktop.gnome.wallpaper = {
-    image = ./assets/background.png;
+    image = ./background.jpg;
     primary = "#06282D";
     secondary = "#000000";
   };
