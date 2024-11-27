@@ -26,4 +26,6 @@
   };
 
   software.gaming.enable = true;
+
+  gnome.app-layout = import ./gnome.settings.nix;
 }

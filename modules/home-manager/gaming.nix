@@ -3,7 +3,7 @@
   options.software.gaming = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      description = "Allow user to share their screen over Wifi";
+      description = "Install gaming software";
       default = false;
     };
   };

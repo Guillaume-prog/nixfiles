@@ -20,7 +20,7 @@ in
 
   config = 
   let
-    path = "/home/guillaume/.background-image";
+    path = "${config.home.homeDirectory}/.background-image";
   in 
   {
 
