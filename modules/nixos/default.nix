@@ -6,6 +6,7 @@
     ./bootloader.nix
     ./localisation.nix
     ./fonts.nix
+    ./iphone.nix
     ./keyboard.nix
     ./printer.nix
     ./steam.nix
