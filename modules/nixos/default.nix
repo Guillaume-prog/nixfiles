@@ -9,6 +9,7 @@
     ./iphone.nix
     ./keyboard.nix
     ./printer.nix
+    ./samba.nix
     ./steam.nix
     ./syncthing.nix
     ./nh.nix
