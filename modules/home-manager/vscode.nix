@@ -4,6 +4,7 @@
     alejandra # Nix formatter
     nixd # Nix LSP
     fritzing
+    godot_4
   ];
 
   programs.vscode = {
