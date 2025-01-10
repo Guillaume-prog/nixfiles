@@ -35,7 +35,7 @@
     pkgs = import nixpkgs { 
       inherit system; 
       overlays = [
-        inputs.nur.overlay
+        inputs.nur.overlay.default
       ];
       config.allowUnfree = true;
     };
