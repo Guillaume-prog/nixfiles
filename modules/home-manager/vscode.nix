@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     alejandra # Nix formatter
     nixd # Nix LSP
+    fritzing
   ];
 
   programs.vscode = {
