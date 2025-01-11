@@ -19,7 +19,6 @@
   software = {
     anydesk.enable = true;
     beeper.enable = true;
-    cura.enable = true;
     fragments.enable = true;
 
     discord.package = pkgs.vesktop;
