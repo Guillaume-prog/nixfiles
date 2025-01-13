@@ -13,7 +13,7 @@ in {
         enable = true;
     
         settings = {
-            import = [
+            general.import = [
                 "${inputs.alacritty-themes}/themes/catpuccin-machiatto.toml"
             ];
 

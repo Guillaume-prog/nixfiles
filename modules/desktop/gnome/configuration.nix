@@ -18,49 +18,47 @@
 
   # Desktop packages to include
 
-  environment.systemPackages = (with pkgs; [
+  environment.systemPackages = with pkgs; [
     gedit
     gnome-extension-manager
     loupe # image viewer
     evince # document viewer
     snapshot # camera
     dconf2nix # useful for parsing dconf
-  ]) ++ (with pkgs.gnome; [
     gnome-calculator
     gnome-calendar
     gnome-tweaks
     nautilus
     simple-scan
-  ]);
+  ];
 
   # Desktop packages to exclude
 
   services.xserver.excludePackages = [ pkgs.xterm ];
   documentation.nixos.enable = false;
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-console
-    gnome-photos
-    gnome-tour
-    gnome-text-editor
-  ]) ++ (with pkgs.gnome; [
+  environment.gnome.excludePackages = with pkgs; [
     atomix # puzzle game
     cheese # webcam tool
     epiphany # web browser
-    geary # email reader
+    geary
     gnome-characters
+    gnome-console
     gnome-contacts
     gnome-initial-setup
     gnome-maps
     gnome-music
+    gnome-photos
     gnome-shell-extensions
     gnome-software
+    gnome-text-editor # email reader
+    gnome-tour
     gnome-weather
     hitori # sudoku game
     iagno # go game
     tali # poker game
     totem # video player
     yelp # Help view
-  ]);
+  ];
   
 }
