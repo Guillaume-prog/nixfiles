@@ -29,4 +29,19 @@ in {
         };
     };
 
+    programs.direnv = {
+        enable = true;
+        enableBashIntegration = true;
+        nix-direnv.enable = true;
+    };
+
+    programs.bash = {
+        enable = true;
+        bashrcExtra = ''eval "$(direnv hook bash)"'';
+    };
+
+    home.file.".config/direnv/direnv.toml".text = ''
+        hide_env_diff = true
+    '';
+
 }
