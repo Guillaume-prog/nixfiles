@@ -18,7 +18,7 @@ in {
             ];
 
             font.normal = {
-                family = "FiraCode Nerd Font Mono";
+                family = "Iosevka Nerd Font";
                 style = "Regular";
             };
 
@@ -27,6 +27,12 @@ in {
                 y = 8;
             };
         };
+    };
+
+    programs.oh-my-posh = {
+        enable = true;
+        enableBashIntegration = true;
+        settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./posh.omp.json));
     };
 
     programs.direnv = {

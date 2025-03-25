@@ -3,10 +3,10 @@
 {
   imports = [
     ../desktop/gnome/home
-    ./terminal.nix
+    ./firefox
+    ./terminal
     ./audio.nix
     ./git.nix
-    ./firefox
     ./gaming.nix
     ./vscode.nix
     ./ssh.nix

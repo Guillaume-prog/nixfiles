@@ -36,6 +36,8 @@
       "workbench.iconTheme" = "catppuccin-macchiato";
       "workbench.colorTheme" = "Catppuccin Macchiato";
 
+      "editor.fontFamily" = ["Iosevka Nerd Font" "Droid Sans Mono" "monospace"];
+
       # Nix config
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
