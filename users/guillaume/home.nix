@@ -1,4 +1,4 @@
-{ pkgs, hostname, ... }:
+{ pkgs, hostname, unstable-pkgs, ... }:
 
 { 
   imports = [
@@ -15,6 +15,12 @@
     primary = "#06282D";
     secondary = "#000000";
   };
+
+  home.packages = (with pkgs; [
+    orca-slicer
+  ]) ++ (with unstable-pkgs; [
+    cura-appimage
+  ]);
 
   software = {
     anydesk.enable = true;

@@ -26,7 +26,7 @@
       inherit inputs pkgs unstable-pkgs flake-path; 
       hostname = config.networking.hostName; 
     };
-    backupFileExtension = "backup";
+    backupFileExtension = "hm-backup";
   };
 
   # Enable networking
