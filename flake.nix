@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nur.url = "github:nix-community/nur";
 
     home-manager = {
@@ -53,6 +54,7 @@
     nixosConfigurations = {
       beelink = create-system "beelink";
       asus = create-system "asus";
+      wsl = create-system "wsl";
     };
   };
 }

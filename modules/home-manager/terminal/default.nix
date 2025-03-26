@@ -5,9 +5,11 @@ in {
 
     home.packages = [
         wfetch
-        pkgs.tree
-        pkgs.vim
-    ];
+    ] ++ (with pkgs; [
+        fastfetch
+        tree
+        vim
+    ]);
 
     programs.alacritty = {
         enable = true;
