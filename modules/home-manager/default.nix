@@ -46,7 +46,9 @@
       "fragments"
     ]) ++ [
       cfg.discord.package
-    ]  ++ (with unstable-pkgs; [
+    ] ++ (with pkgs; [
+      inkscape
+    ]) ++ (with unstable-pkgs; [
       anytype
     ]);
 
