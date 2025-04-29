@@ -1,5 +1,7 @@
 { inputs, pkgs, unstable-pkgs, flake-path, config, ... }:
-
+let
+  wsl-user = "groussin";
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -13,7 +15,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
-  users.users.groussin = {
+  users.users.${wsl-user} = {
     isNormalUser = true;
     description = "Guillaume Roussin";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -27,23 +29,28 @@
     backupFileExtension = "hm-backup";
   };
 
-  home-manager.users.groussin = import ./home.nix;
+  home-manager.users.${wsl-user} = import ./home.nix;
 
   wsl = {
     enable = true;
-    defaultUser = "groussin";
+    defaultUser = wsl-user;
     wslConf.network.hostname = "wsl";
     startMenuLaunchers = true;
   };
 
   environment.systemPackages = [
     pkgs.wget
+    pkgs.lazydocker
+    pkgs.ncdu
   ];
 
   programs.nix-ld = {
     enable = true;
     package = pkgs.nix-ld-rs;
   };
+
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [ wsl-user ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
