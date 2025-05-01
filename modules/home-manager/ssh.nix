@@ -6,7 +6,7 @@
 
     Host nas
       HostName 192.168.1.200
-      User yriel
+      User truenas_admin
       Port 9222
 
     Host vps
