@@ -1,4 +1,4 @@
-{pkgs, lib, inputs, ...}: 
+{pkgs, lib, ...}: 
 let
   defaultSearchEngine = "DuckDuckGo";
 in
@@ -17,6 +17,7 @@ in
         languagetool
 
         ublock-origin
+        sponsorblock
         cookie-autodelete
         i-dont-care-about-cookies
         
