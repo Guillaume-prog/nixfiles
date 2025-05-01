@@ -24,7 +24,6 @@
 
   software = {
     anydesk.enable = true;
-    beeper.enable = true;
     fragments.enable = true;
 
     discord.package = pkgs.vesktop;

@@ -20,7 +20,6 @@
     };
   in {
     anydesk.enable = enableOpt;
-    beeper.enable = enableOpt;
     cura.enable = enableOpt;
     fragments.enable = enableOpt;
     
@@ -41,7 +40,6 @@
   in {
     home.packages = (optional-packages [
       "anydesk"
-      "beeper"
       "cura"
       "fragments"
     ]) ++ [
@@ -49,6 +47,7 @@
     ] ++ (with pkgs; [
       inkscape
     ]) ++ (with unstable-pkgs; [
+      beeper
       anytype
     ]);
 
