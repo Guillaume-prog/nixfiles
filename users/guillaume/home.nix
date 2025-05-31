@@ -26,7 +26,7 @@
     anydesk.enable = true;
     fragments.enable = true;
 
-    discord.package = pkgs.vesktop;
+    discord.package = unstable-pkgs.vesktop;
   };
 
   software.gaming.enable = true;
