@@ -1,15 +1,14 @@
-{ inputs, pkgs, ... }: 
-let
-  wfetch = inputs.wfetch.packages.${pkgs.system}.default;
-in {
+{ inputs, pkgs, ... }: {
 
-    home.packages = [
-        wfetch
-    ] ++ (with pkgs; [
+    home.packages = with pkgs; [
         fastfetch
         tree
         vim
-    ]);
+        tmux
+        lazydocker
+        jq
+        yq
+    ];
 
     programs.alacritty = {
         enable = true;
