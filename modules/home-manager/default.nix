@@ -4,9 +4,9 @@
   imports = [
     ../desktop/gnome/home
     ./firefox
+    ./git
     ./terminal
     ./audio.nix
-    ./git.nix
     ./gaming.nix
     ./vscode.nix
     ./ssh.nix
