@@ -26,6 +26,11 @@
       # Theming
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
+
+      # Rust
+      rust-lang.rust-analyzer
+      tamasfe.even-better-toml
+      fill-labs.dependi
     ];
 
     userSettings = {
