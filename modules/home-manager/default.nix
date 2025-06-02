@@ -4,9 +4,9 @@
   imports = [
     ../desktop/gnome/home
     ./firefox
+    ./git
     ./terminal
     ./audio.nix
-    ./git.nix
     ./gaming.nix
     ./vscode.nix
     ./ssh.nix
@@ -20,7 +20,6 @@
     };
   in {
     anydesk.enable = enableOpt;
-    beeper.enable = enableOpt;
     cura.enable = enableOpt;
     fragments.enable = enableOpt;
     
@@ -41,17 +40,19 @@
   in {
     home.packages = (optional-packages [
       "anydesk"
-      "beeper"
       "cura"
       "fragments"
     ]) ++ [
       cfg.discord.package
-    ]  ++ (with unstable-pkgs; [
+    ] ++ (with pkgs; [
+      inkscape
+    ]) ++ (with unstable-pkgs; [
+      beeper
       anytype
     ]);
 
     
-    
+    home.keyboard = null;
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
   };
