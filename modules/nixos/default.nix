@@ -57,6 +57,7 @@
     git
     vlc
     nmap
+    ncdu
     mlocate
   ];
 
@@ -72,6 +73,11 @@
   };
 
   screen-share.enable = true;
+  
+  services.netbird = {
+    enable = true;
+    package = unstable-pkgs.netbird;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
