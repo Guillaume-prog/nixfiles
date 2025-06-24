@@ -49,6 +49,8 @@
     ]) ++ (with unstable-pkgs; [
       beeper
       anytype
+      gimp
+      obsidian
     ]);
 
     
