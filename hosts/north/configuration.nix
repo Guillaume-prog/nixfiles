@@ -6,7 +6,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "beelink";
+  networking.hostName = "north";
 
   user.guillaume = {
     enable = true;
