@@ -1,8 +1,17 @@
 {pkgs, lib, ...}: 
 let
   defaultSearchEngine = "DuckDuckGo";
+
+  customAddons = pkgs.callPackage ./addons.nix {
+    inherit lib;
+    inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
+  };
 in
 {
+
+  # options.my.programs.firefox = {
+  #   enable = lib.mkEnableOption "Firefox web browser";
+  # };
 
   programs.firefox = {
     enable = true;
@@ -22,9 +31,14 @@ in
         i-dont-care-about-cookies
         
         youtube-shorts-block
-      ];
+      ] ++ (with customAddons; [ igplus-extension ]);
 
       settings = {
+        # How to figure out which setting to change:
+        # 1. Make a backup of prefs.js:  $ cp ~/.mozilla/firefox/hakonen/{prefs.js,prefs.js.bak}
+        # 2. Make a change through Firefox's settings page
+        # 3. Compare prefs.js and the backup:  $ meld ~/.mozilla/firefox/hakonen/{prefs.js.bak,prefs.js}
+
         "browser.disableResetPrompt" = true;
         "browser.download.panel.shown" = true;
         # "browser.download.useDownloadDir" = false;
