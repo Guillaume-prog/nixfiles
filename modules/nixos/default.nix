@@ -59,6 +59,7 @@
     vlc
     nmap
     mlocate
+    usbutils
   ];
 
   environment.interactiveShellInit = ''
