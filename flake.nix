@@ -47,8 +47,8 @@
     };
   in {
     nixosConfigurations = {
-      beelink = create-system "beelink";
       asus = create-system "asus";
+      north = create-system "north";
       wsl = create-system "wsl";
     };
   };
