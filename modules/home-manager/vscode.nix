@@ -19,6 +19,7 @@
     extensions = with pkgs.vscode-extensions; [
       # Nix editing
       jnoortheen.nix-ide
+      arrterian.nix-env-selector
 
       # Better errors
       usernamehw.errorlens
@@ -26,6 +27,9 @@
       # Theming
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
+
+      # Python
+      ms-python.python
 
       # Rust
       rust-lang.rust-analyzer
