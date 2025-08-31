@@ -22,7 +22,6 @@ in
         auto-tab-discard
         
         bitwarden
-        darkreader
         languagetool
 
         ublock-origin
@@ -71,11 +70,11 @@ in
         "browser.uiCustomization.state" = lib.importJSON ./firefox-ui.json;
 
         # Auto allow extensions
-        "extensions.autoDisableScopes" = 0;
-        "extensions.enabledScopes" = 15; # Enable all install locations (0b1111)
+        # "extensions.autoDisableScopes" = 0;
+        # "extensions.enabledScopes" = 15; # Enable all install locations (0b1111)
 
         # Force dark mode
-        "ui.systemUsesDarkTheme" = 1;
+        # "ui.systemUsesDarkTheme" = 1;
         # "layout.css.prefers-color-scheme.content-override" = 2;
 
         # privacy & security settings
@@ -99,11 +98,11 @@ in
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
 
-        "experiments.enabled" = false;
-        "experiments.supported" = false;
-        "network.cookie.cookieBehavior" = 1; # block third-party (or use 5 for Total Cookie Protection)
-        "privacy.firstparty.isolate" = true;
-        "privacy.resistFingerprinting" = true;
+        # "experiments.enabled" = false;
+        # "experiments.supported" = false;
+        # "network.cookie.cookieBehavior" = 1; # block third-party (or use 5 for Total Cookie Protection)
+        # "privacy.firstparty.isolate" = true;
+        # "privacy.resistFingerprinting" = true;
       };
 
       search = {
