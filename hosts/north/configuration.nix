@@ -26,9 +26,12 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   hardware.graphics = {
-  enable = true;
-  enable32Bit = true;
-};
+    enable = true;
+    enable32Bit = true;
+  };
+
+  virtualisation.docker.enable = true;
+  users.users.guillaume.extraGroups = [ "docker" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
