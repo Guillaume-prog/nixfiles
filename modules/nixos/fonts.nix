@@ -2,10 +2,12 @@
 
   fonts = {
 
-    packages = with pkgs; [
+    packages = (with pkgs; [
       nanum # For korean support
-      (nerdfonts.override { fonts = [ "Iosevka" "FiraCode" ]; })
-    ];
+    ]) ++ (with pkgs.nerd-fonts; [
+      iosevka
+      fira-code
+    ]);
 
     fontconfig = {
       defaultFonts = {

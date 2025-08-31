@@ -1,6 +1,6 @@
 {pkgs, lib, ...}: 
 let
-  defaultSearchEngine = "DuckDuckGo";
+  defaultSearchEngine = "ddg";
 
   customAddons = pkgs.callPackage ./addons.nix {
     inherit lib;
@@ -17,7 +17,7 @@ in
     enable = true;
     profiles.guillaume = {
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         simple-tab-groups
         auto-tab-discard
         
@@ -134,15 +134,15 @@ in
 
               "NixOS Wiki" = {
                 urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                icon = "https://nixos.wiki/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = [ "@nw" ];
               };
 
-              "Google".metaData.hidden = true;
-              "Bing".metaData.hidden = true;
-              "eBay".metaData.hidden = true;
-              "Wikipedia (en)".metaData.hidden = true;
+              google.metaData.hidden = true;
+              bing.metaData.hidden = true;
+              ebay.metaData.hidden = true;
+              wikipedia.metaData.hidden = true;
             };
           };
 

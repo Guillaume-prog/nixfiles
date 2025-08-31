@@ -10,57 +10,59 @@
   programs.vscode = {
     enable = true;
     package = unstable-pkgs.vscodium;
-
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
 
-    # keep extensions minimal, additionnal extensions will be installed per project
-    extensions = with pkgs.vscode-extensions; [
-      # Nix editing
-      jnoortheen.nix-ide
-      arrterian.nix-env-selector
+    profiles.default = {
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
 
-      # Better errors
-      usernamehw.errorlens
+      # keep extensions minimal, additionnal extensions will be installed per project
+      extensions = with pkgs.vscode-extensions; [
+        # Nix editing
+        jnoortheen.nix-ide
+        arrterian.nix-env-selector
 
-      # Theming
-      catppuccin.catppuccin-vsc
-      catppuccin.catppuccin-vsc-icons
+        # Better errors
+        usernamehw.errorlens
 
-      # Python
-      ms-python.python
+        # Theming
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
 
-      # Rust
-      rust-lang.rust-analyzer
-      tamasfe.even-better-toml
-      fill-labs.dependi
-    ];
+        # Python
+        ms-python.python
 
-    userSettings = {
-      # Git
-      "git.confirmSync" = false;
+        # Rust
+        rust-lang.rust-analyzer
+        tamasfe.even-better-toml
+        fill-labs.dependi
+      ];
 
-      # Theming
-      "workbench.iconTheme" = "catppuccin-macchiato";
-      "workbench.colorTheme" = "Catppuccin Macchiato";
+      userSettings = {
+        # Git
+        "git.confirmSync" = false;
 
-      "editor.fontFamily" = ["Iosevka Nerd Font" "Droid Sans Mono" "monospace"];
+        # Theming
+        "workbench.iconTheme" = "catppuccin-macchiato";
+        "workbench.colorTheme" = "Catppuccin Macchiato";
 
-      # Nix config
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nixd";
+        "editor.fontFamily" = ["Iosevka Nerd Font" "Droid Sans Mono" "monospace"];
 
-      "nixpkgs" = {
-        "expr" = "import (builtins.getFlake ${flake-path}).inputs.nixpkgs {}";
-      };
+        # Nix config
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
 
-      "formatting" = {
-        "command" = [ "alejandra" ];
-      };
+        "nixpkgs" = {
+          "expr" = "import (builtins.getFlake ${flake-path}).inputs.nixpkgs {}";
+        };
 
-      "options" = {
-        "expr" = "(builtins.getFlake ${flake-path}).nixosConfigurations.${hostname}.options";
+        "formatting" = {
+          "command" = [ "alejandra" ];
+        };
+
+        "options" = {
+          "expr" = "(builtins.getFlake ${flake-path}).nixosConfigurations.${hostname}.options";
+        };
       };
     };
   };
