@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, unstable-pkgs, ... }: {
 
     home.packages = with pkgs; [
         fastfetch
@@ -32,6 +32,7 @@
 
     programs.oh-my-posh = {
         enable = true;
+        package = unstable-pkgs.oh-my-posh;
         enableBashIntegration = true;
         settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./posh.omp.json));
     };
@@ -44,8 +45,8 @@
 
     programs.bash = {
         enable = true;
-        bashrcExtra = ''eval "$(direnv hook bash)"'';
     };
+
 
     home.file.".config/direnv/direnv.toml".text = ''
         hide_env_diff = true

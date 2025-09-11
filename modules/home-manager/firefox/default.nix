@@ -75,6 +75,7 @@ in
 
         # Force dark mode
         # "ui.systemUsesDarkTheme" = 1;
+
         # "layout.css.prefers-color-scheme.content-override" = 2;
 
         # privacy & security settings

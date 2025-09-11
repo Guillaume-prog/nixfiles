@@ -58,6 +58,7 @@
     git
     vlc
     nmap
+    ncdu
     mlocate
     usbutils
   ];
@@ -73,5 +74,10 @@
   };
 
   screen-share.enable = true;
+
+  services.netbird = {
+    enable = true;
+    package = unstable-pkgs.netbird;
+  };
 
 }

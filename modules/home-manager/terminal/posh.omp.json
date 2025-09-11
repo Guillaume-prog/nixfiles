@@ -63,5 +63,12 @@
     }
   ],
   "final_space": true,
-  "version": 3
+  "version": 3,
+
+  "upgrade": {
+    "notice": false,
+    "interval": "168h",
+    "auto": false,
+    "source": "cdn"
+  }
 }
