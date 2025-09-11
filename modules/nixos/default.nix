@@ -38,7 +38,7 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -71,11 +71,10 @@
   services.locate = {
     enable = true;
     package = pkgs.mlocate;
-    localuser = null;
   };
 
   screen-share.enable = true;
-  
+
   services.netbird = {
     enable = true;
     package = unstable-pkgs.netbird;

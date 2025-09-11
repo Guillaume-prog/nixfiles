@@ -1,6 +1,6 @@
 {pkgs, lib, ...}: 
 let
-  defaultSearchEngine = "DuckDuckGo";
+  defaultSearchEngine = "ddg";
 
   customAddons = pkgs.callPackage ./addons.nix {
     inherit lib;
@@ -17,12 +17,11 @@ in
     enable = true;
     profiles.guillaume = {
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         simple-tab-groups
         auto-tab-discard
         
         bitwarden
-        darkreader
         languagetool
 
         ublock-origin
@@ -71,11 +70,12 @@ in
         "browser.uiCustomization.state" = lib.importJSON ./firefox-ui.json;
 
         # Auto allow extensions
-        "extensions.autoDisableScopes" = 0;
-        "extensions.enabledScopes" = 15; # Enable all install locations (0b1111)
+        # "extensions.autoDisableScopes" = 0;
+        # "extensions.enabledScopes" = 15; # Enable all install locations (0b1111)
 
         # Force dark mode
-        "ui.systemUsesDarkTheme" = 1;
+        # "ui.systemUsesDarkTheme" = 1;
+
         # "layout.css.prefers-color-scheme.content-override" = 2;
 
         # privacy & security settings
@@ -99,11 +99,11 @@ in
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
 
-        "experiments.enabled" = false;
-        "experiments.supported" = false;
-        "network.cookie.cookieBehavior" = 1; # block third-party (or use 5 for Total Cookie Protection)
-        "privacy.firstparty.isolate" = true;
-        "privacy.resistFingerprinting" = true;
+        # "experiments.enabled" = false;
+        # "experiments.supported" = false;
+        # "network.cookie.cookieBehavior" = 1; # block third-party (or use 5 for Total Cookie Protection)
+        # "privacy.firstparty.isolate" = true;
+        # "privacy.resistFingerprinting" = true;
       };
 
       search = {
@@ -135,15 +135,15 @@ in
 
               "NixOS Wiki" = {
                 urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-                iconUpdateURL = "https://nixos.wiki/favicon.png";
+                icon = "https://nixos.wiki/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000; # every day
                 definedAliases = [ "@nw" ];
               };
 
-              "Google".metaData.hidden = true;
-              "Bing".metaData.hidden = true;
-              "eBay".metaData.hidden = true;
-              "Wikipedia (en)".metaData.hidden = true;
+              google.metaData.hidden = true;
+              bing.metaData.hidden = true;
+              ebay.metaData.hidden = true;
+              wikipedia.metaData.hidden = true;
             };
           };
 

@@ -3,17 +3,17 @@
 let 
   cfg = config.user;
 
-  user-options = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      description = "Activate this user for this machine";
-      default = false;
+  user-options = with lib; {
+    enable = mkEnableOption "user config";
+
+    icon = mkOption {
+      type = types.path;
+      description = "Set user icon";
     };
 
-    home-config = lib.mkOption {
-      type = lib.types.path;
+    home-config = mkOption {
+      type = types.path;
       description = "Set home config";
-      default = "";
     };
   };
 
