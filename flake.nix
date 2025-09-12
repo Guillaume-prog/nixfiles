@@ -45,11 +45,12 @@
       specialArgs = { inherit inputs pkgs unstable-pkgs flake-path; };
       modules = [ ./hosts/${name}/configuration.nix ];
     };
+
+    create-configurations = hostnames: builtins.listToAttrs (map (name: {
+      name = name;
+      value = create-system name;
+    }) hostnames);
   in {
-    nixosConfigurations = {
-      asus = create-system "asus";
-      north = create-system "north";
-      wsl = create-system "wsl";
-    };
+    nixosConfigurations = create-configurations [ "asus" "north" "wsl" "potato" ];
   };
 }
