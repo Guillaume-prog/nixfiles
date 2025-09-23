@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   imports = [
-    ./hardware-configuration.nixx
+    ./hardware-configuration.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -12,9 +12,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable networking
-  networking.hostName = "homelab"; # Define your hostname.
+  networking.hostName = "potato"; # Define your hostname.
   networking.networkmanager.enable = true;
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Headless mode
   services.xserver.enable = false;
@@ -29,10 +28,19 @@
   users.users.lexi = {
     isNormalUser = true;
     description = "lexi";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
-  environment.systemPackages = with pkgs; [ fastfetch vim tree ];
+  environment.systemPackages = with pkgs; [ fastfetch vim tree lazydocker ];
+
+  virtualisation.docker.enable = true;
+
+  networking.extraHosts = ''
+    192.168.1.200 nas.lan
+    192.168.1.201 potato.lan # SELF
+    192.168.1.202 home-assistant.lan
+    192.168.1.203 3d-printer.lan
+  '';
 
   system.stateVersion = "24.05";
 
