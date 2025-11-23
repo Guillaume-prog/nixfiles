@@ -11,7 +11,7 @@
     ./printer.nix
     ./samba.nix
     ./steam.nix
-    ./syncthing.nix
+    # ./syncthing.nix
     ./nh.nix
     ./users.nix
     ./screen-share.nix
