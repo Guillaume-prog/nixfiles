@@ -33,7 +33,4 @@
 
   gnome.app-layout = import ./gnome.settings.nix;
 
-  # git.username = "Guillaume-prog";
-  # git.email = "76855158+Guillaume-prog@users.noreply.github.com";
-
 }
