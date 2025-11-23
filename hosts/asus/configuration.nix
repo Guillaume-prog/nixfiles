@@ -13,11 +13,6 @@
     home-config = ../../users/guillaume/home.nix;
   };
 
-  user.lilou = {
-    enable = true;
-    home-config = ../../users/lilou/home.nix;
-  };
-
   # Keyboard layout
   keyboard.layout = "fr";
 
