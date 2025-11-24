@@ -18,6 +18,7 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  my.bootloader.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];

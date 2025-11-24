@@ -62,6 +62,6 @@
       value = create-system name;
     }) hostnames);
   in {
-    nixosConfigurations = create-configurations [ "asus" "north" "wsl" "potato" ];
+    nixosConfigurations = create-configurations [ "asus" "north" "wsl" "potato" "pavilion" ];
   };
 }
