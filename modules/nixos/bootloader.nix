@@ -41,8 +41,5 @@ in {
       efiSupport = cfg.bootMode == "uefi";
       efiInstallAsRemovable = cfg.bootMode == "uefi";
     };
-
-    # Only relevant for UEFI.
-    boot.loader.efi.canTouchEfiVariables = (cfg.bootMode == "uefi");
   };
 }
