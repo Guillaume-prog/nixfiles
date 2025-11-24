@@ -50,6 +50,7 @@
       asus = create-system "asus";
       north = create-system "north";
       wsl = create-system "wsl";
+      pavilion = create-system "pavilion";
     };
   };
 }
