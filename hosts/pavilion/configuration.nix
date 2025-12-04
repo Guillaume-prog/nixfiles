@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
 imports = [
@@ -11,6 +11,8 @@ imports = [
   my.bootloader.device = "/dev/sda";
 
   networking.hostName = "pavilion";
+
+  environment.systemPackages = [ pkgs.soulseekqt ];
   
   user.guillaume = {
     enable = true;
