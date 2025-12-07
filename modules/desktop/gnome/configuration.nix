@@ -16,6 +16,12 @@
     "${pkgs.bluez}/libexec/bluetooth/bluetoothd -f /etc/bluetooth/main.conf --experimental"
   ];
 
+  # Cursor size on x11 apps
+  environment.sessionVariables = {
+    XCURSOR_THEME = "Bibata-Ice";
+    XCURSOR_SIZE = "96";
+  };
+
   # Desktop packages to include
 
   environment.systemPackages = with pkgs; [

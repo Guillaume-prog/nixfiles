@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -11,11 +11,6 @@
   user.guillaume = {
     enable = true;
     home-config = ../../users/guillaume/home.nix;
-  };
-
-  user.lilou = {
-    enable = true;
-    home-config = ../../users/lilou/home.nix;
   };
 
   # Keyboard layout

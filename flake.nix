@@ -34,16 +34,27 @@
         inputs.nur.overlays.default
       ];
       config.allowUnfree = true;
+      config.allowUnfreePredicate = _: true;
     };
 
     unstable-pkgs = import inputs.nixpkgs-unstable { 
       inherit system; 
       config.allowUnfree = true;
+      config.allowUnfreePredicate = _: true;
     };
 
     create-system = name: nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs pkgs unstable-pkgs flake-path; };
-      modules = [ ./hosts/${name}/configuration.nix ];
+      modules = [ 
+        ./hosts/${name}/configuration.nix
+        {
+          imports = [
+            inputs.nixpkgs.nixosModules.readOnlyPkgs
+          ];
+
+          nixpkgs.pkgs = pkgs;
+        }
+      ];
     };
 
     create-configurations = hostnames: builtins.listToAttrs (map (name: {

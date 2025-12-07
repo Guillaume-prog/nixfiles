@@ -12,18 +12,17 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable networking
-  networking.hostName = "potato"; # Define your hostname.
+  networking.hostName = "potato";
   networking.networkmanager.enable = true;
 
   # Headless mode
   services.xserver.enable = false;
+  services.logind.lidSwitch = "ignore";
   console.keyMap = "fr";
 
   # SSH
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [22];
-
-  services.logind.lidSwitch = "ignore";
 
   users.users.lexi = {
     isNormalUser = true;
@@ -41,6 +40,26 @@
     192.168.1.202 home-assistant.lan
     192.168.1.203 3d-printer.lan
   '';
+
+  # Mount the NAS share
+  environment.etc."smb-credentials".text = ''
+    username=groussin
+    password=KqkbXXEPi&eypbtK5!U6
+  '';
+
+  fileSystems."/mnt/nas" = {
+    device = "//192.168.1.200/media";
+    fsType = "cifs";
+
+    # Credentials
+    options = [
+      "credentials=/etc/smb-credentials"
+      "noauto"                  # don't try mounting immediately at boot
+      "nofail"                  # boot continues even if mount fails
+      "_netdev"                 # mark as network device, waits for network
+      "vers=3.0"                # (optional) specify SMB version
+    ];
+  };
 
   system.stateVersion = "24.05";
 

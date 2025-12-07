@@ -34,11 +34,9 @@ in
 {
   options.user = {
     guillaume = user-options;
-    lilou = user-options;
   };
 
   config = lib.mkMerge [
-    (configure-user "Guillaume") 
-    (configure-user "Lilou")
+    (configure-user "Guillaume")
   ];
 }

@@ -9,6 +9,10 @@
       User truenas_admin
       Port 9222
 
+    Host potato
+      HostName 192.168.1.201
+      User lexi
+
     Host vps
       HostName 82.165.119.207
       User root

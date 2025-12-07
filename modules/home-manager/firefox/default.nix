@@ -1,6 +1,7 @@
 {pkgs, lib, ...}: 
 let
   defaultSearchEngine = "ddg";
+  homepage = "https://lilougui.xyz";
 
   customAddons = pkgs.callPackage ./addons.nix {
     inherit lib;
@@ -53,14 +54,17 @@ in
         "browser.search.defaultenginename" = defaultSearchEngine;
         "browser.search.order.1" = defaultSearchEngine;
 
-        "browser.startup.homepage" = "https://start.duckduckgo.com";
-        "browser.startup.page" = 3; # show previous tabs
+        "browser.startup.homepage" = homepage;
+        # "browser.startup.page" = 3; # show previous tabs
         "browser.sessionstore.resume_session_once" = false;
         "browser.sessionstore.resume_from_crash" = true;
 
         # newtab config
+        "browser.newtabpage.enabled" = false;
+        "browser.newtab.url" = homepage;
+        "browser.newtabpage.activity-stream.default.sites" = "";
+        "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
 
         # stop forcing default browser
         "browser.shell.checkDefaultBrowser" = false;

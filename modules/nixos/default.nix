@@ -28,6 +28,8 @@
       hostname = config.networking.hostName; 
     };
     backupFileExtension = "hm-backup";
+    useGlobalPkgs = true;
+    useUserPackages = true;
   };
 
   # Enable networking
