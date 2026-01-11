@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
 
   imports = [
     ./hardware-configuration.nix
@@ -42,10 +42,7 @@
   '';
 
   # Mount the NAS share
-  environment.etc."smb-credentials".text = ''
-    username=groussin
-    password=KqkbXXEPi&eypbtK5!U6
-  '';
+  environment.etc."smb-credentials".source = config.sops.secrets."smb-credentials".path;
 
   fileSystems."/mnt/nas" = {
     device = "//192.168.1.200/media";

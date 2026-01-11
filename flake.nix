@@ -6,6 +6,11 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nur.url = "github:nix-community/nur";
+    
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -23,7 +28,7 @@
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
     flake-path = "/nixfiles";
@@ -44,8 +49,9 @@
     };
 
     create-system = name: nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs pkgs unstable-pkgs flake-path; };
+      specialArgs = { inherit self inputs pkgs unstable-pkgs flake-path; };
       modules = [ 
+        inputs.sops-nix.nixosModules.sops
         ./hosts/${name}/configuration.nix
         {
           imports = [

@@ -15,6 +15,7 @@
     ./nh.nix
     ./users.nix
     ./screen-share.nix
+    ./sops.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

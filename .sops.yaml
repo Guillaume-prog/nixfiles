@@ -1,0 +1,7 @@
+keys:
+  - &master age1gm35pmg295plpruw0rdd64h0vqalxc0499q0z0lfprscaqmkfpdqw866hm
+
+creation_rules:
+  - key_groups:
+    - age:
+        - *master
