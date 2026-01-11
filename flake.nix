@@ -6,6 +6,11 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nur.url = "github:nix-community/nur";
+    
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -23,7 +28,7 @@
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs: 
   let
     system = "x86_64-linux";
     flake-path = "/nixfiles";
@@ -34,23 +39,35 @@
         inputs.nur.overlays.default
       ];
       config.allowUnfree = true;
+      config.allowUnfreePredicate = _: true;
     };
 
     unstable-pkgs = import inputs.nixpkgs-unstable { 
       inherit system; 
       config.allowUnfree = true;
+      config.allowUnfreePredicate = _: true;
     };
 
     create-system = name: nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs pkgs unstable-pkgs flake-path; };
-      modules = [ ./hosts/${name}/configuration.nix ];
+      specialArgs = { inherit self inputs pkgs unstable-pkgs flake-path; };
+      modules = [ 
+        inputs.sops-nix.nixosModules.sops
+        ./hosts/${name}/configuration.nix
+        {
+          imports = [
+            inputs.nixpkgs.nixosModules.readOnlyPkgs
+          ];
+
+          nixpkgs.pkgs = pkgs;
+        }
+      ];
     };
+
+    create-configurations = hostnames: builtins.listToAttrs (map (name: {
+      name = name;
+      value = create-system name;
+    }) hostnames);
   in {
-    nixosConfigurations = {
-      asus = create-system "asus";
-      north = create-system "north";
-      wsl = create-system "wsl";
-      pavilion = create-system "pavilion";
-    };
+    nixosConfigurations = create-configurations [ "asus" "north" "wsl" "potato" "pavilion" ];
   };
 }

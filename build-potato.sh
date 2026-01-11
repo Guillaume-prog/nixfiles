@@ -1,0 +1,1 @@
+nixos-rebuild switch --flake /nixfiles#potato --target-host root@potato

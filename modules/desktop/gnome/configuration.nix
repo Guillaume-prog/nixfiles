@@ -16,6 +16,12 @@
     "${pkgs.bluez}/libexec/bluetooth/bluetoothd -f /etc/bluetooth/main.conf --experimental"
   ];
 
+  # Cursor size on x11 apps
+  environment.sessionVariables = {
+    XCURSOR_THEME = "Bibata-Ice";
+    XCURSOR_SIZE = "96";
+  };
+  
   # configure default applications for apps
   xdg.mime = {
     enable = true;

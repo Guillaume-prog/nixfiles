@@ -15,6 +15,7 @@
     ./nh.nix
     ./users.nix
     ./screen-share.nix
+    ./sops.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -28,7 +29,12 @@
       inherit inputs pkgs unstable-pkgs flake-path; 
       hostname = config.networking.hostName; 
     };
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+    ];
     backupFileExtension = "hm-backup";
+    useGlobalPkgs = true;
+    useUserPackages = true;
   };
 
   # Enable networking
@@ -80,5 +86,9 @@
     enable = true;
     package = unstable-pkgs.netbird;
   };
+
+  # SSH
+  services.openssh.enable = true;
+  networking.firewall.allowedTCPPorts = [22];
 
 }
