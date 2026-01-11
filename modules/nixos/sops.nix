@@ -1,10 +1,6 @@
-{ self, inputs, pkgs, ... }: {
-
+{ self, pkgs, ... }: 
+{
   environment.systemPackages = with pkgs; [ age sops ];
-
-  home-manager.sharedModules = [
-    inputs.sops-nix.homeManagerModules.sops
-  ];
 
   sops = {
     defaultSopsFile = self + "/secrets.yaml";
@@ -15,5 +11,4 @@
     owner = "root";
     mode = "0600";
   };
-
 }
