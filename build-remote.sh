@@ -1,0 +1,1 @@
+nixos-rebuild switch --flake /nixfiles#$1 --target-host root@$1 --build-host root@north
