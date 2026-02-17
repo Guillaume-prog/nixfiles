@@ -72,7 +72,7 @@
   ];
 
   environment.interactiveShellInit = ''
-    alias nx-edit="codium ${flake-path}"
+    alias nx-edit="code ${flake-path}"
     alias nx-update="pushd ${flake-path};sudo nix flake update; nh os switch;popd"
   '';
 

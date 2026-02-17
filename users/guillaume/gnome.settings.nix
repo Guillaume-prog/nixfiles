@@ -1,6 +1,6 @@
 {
 
-favorite-apps = ["firefox.desktop" "vesktop.desktop" "codium.desktop" "net.lutris.Lutris.desktop" "org.prismlauncher.PrismLauncher.desktop" "anytype.desktop" "org.gnome.Nautilus.desktop"];
+favorite-apps = ["firefox.desktop" "vesktop.desktop" "code.desktop" "net.lutris.Lutris.desktop" "org.prismlauncher.PrismLauncher.desktop" "anytype.desktop" "org.gnome.Nautilus.desktop"];
 app-folders = ["Desktop" "Utilities" "System"];
 app-tray = [["Desktop" "System" "Utilities" "beeper.desktop" "steam.desktop"]];
 

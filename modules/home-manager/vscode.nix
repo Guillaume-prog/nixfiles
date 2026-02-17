@@ -9,7 +9,7 @@
 
   programs.vscode = {
     enable = true;
-    package = unstable-pkgs.vscodium;
+    package = unstable-pkgs.vscode;
     mutableExtensionsDir = false;
 
     profiles.default = {
@@ -17,7 +17,7 @@
       enableExtensionUpdateCheck = false;
 
       # keep extensions minimal, additionnal extensions will be installed per project
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with unstable-pkgs.vscode-extensions; [
         # Nix editing
         jnoortheen.nix-ide
         arrterian.nix-env-selector
@@ -36,6 +36,16 @@
         rust-lang.rust-analyzer
         tamasfe.even-better-toml
         fill-labs.dependi
+
+        editorconfig.editorconfig
+        esbenp.prettier-vscode
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "copilot-chat";
+          publisher = "github";
+          version = "0.37.4";
+          sha256 = "sha256-as8aU8NIAe60qV2VihBa4ueOm23nBAos3AAyLA0Smhs=";
+        }
       ];
 
       userSettings = {
