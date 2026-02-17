@@ -16,9 +16,7 @@
     secondary = "#000000";
   };
 
-  home.packages = (with pkgs; [
-    orca-slicer
-  ]) ++ (with unstable-pkgs; [
+  home.packages = (with unstable-pkgs; [
     cura-appimage
   ]);
 
