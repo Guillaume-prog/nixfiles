@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -39,6 +39,8 @@
   virtualisation.docker.enable = true;
   users.users.guillaume.extraGroups = [ "docker" ];
 
+  my.htpc.enable = true;
+  my.htpc.user = "guillaume";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
