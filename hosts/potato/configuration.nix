@@ -31,7 +31,7 @@
     extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
-  environment.systemPackages = with pkgs; [ fastfetch vim tree lazydocker ];
+  environment.systemPackages = with pkgs; [ fastfetch vim tree lazydocker python312 ];
 
   virtualisation.docker.enable = true;
 
