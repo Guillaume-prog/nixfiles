@@ -72,11 +72,11 @@ in {
     services.udev.packages = [ unstable-pkgs.game-devices-udev-rules ];
 
     # Power management (console behavior)
-    services.logind.extraConfig = ''
-      HandlePowerKey=poweroff
-      HandleSuspendKey=ignore
-      IdleAction=ignore
-    '';
+    services.logind.settings.Login = {
+      HandlePowerKey = "poweroff";
+      HandleSuspendKey = "ignore";
+      IdleAction = "ignore";
+    };
 
     # Prevent sleep / lock
     services.xserver.displayManager.gdm.autoSuspend = false;
