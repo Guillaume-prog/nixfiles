@@ -1,10 +1,27 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
+    inputs.jovian.nixosModules.default
   ];
+
+  jovian = {
+    hardware = {
+      has.amd.gpu = true;
+    };
+    steam = {
+      enable = true;
+      updater.splash = "vendor";
+      autoStart = true;
+      user = "guillaume";
+      desktopSession = "gnome";
+    };
+    steamos = {
+      useSteamOSConfig = true;
+    };
+  };
 
   networking.hostName = "north";
 
@@ -39,8 +56,8 @@
   virtualisation.docker.enable = true;
   users.users.guillaume.extraGroups = [ "docker" ];
 
-  my.htpc.enable = true;
-  my.htpc.user = "guillaume";
+  # my.htpc.enable = true;
+  # my.htpc.user = "guillaume";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

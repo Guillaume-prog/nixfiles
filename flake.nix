@@ -26,6 +26,11 @@
       url = "github:catppuccin/grub";
       flake = false;
     };
+
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
