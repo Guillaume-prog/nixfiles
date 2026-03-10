@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/sops.nix
+    ../../modules/nixos/nh.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -30,7 +31,14 @@
     extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
-  environment.systemPackages = with pkgs; [ fastfetch vim tree lazydocker python312 ];
+  environment.systemPackages = with pkgs; [ 
+    cifs-utils
+    fastfetch 
+    vim 
+    tree 
+    lazydocker 
+    python312 
+  ];
 
   virtualisation.docker.enable = true;
 
@@ -45,16 +53,14 @@
   environment.etc."smb-credentials".source = config.sops.secrets."smb-credentials".path;
 
   fileSystems."/mnt/nas" = {
-    device = "//192.168.1.200/media";
+    device = "//nas.lan/media";
     fsType = "cifs";
 
     # Credentials
-    options = [
-      "credentials=/etc/smb-credentials"
-      "nofail"                  # boot continues even if mount fails
-      "_netdev"                 # mark as network device, waits for network
-      "vers=3.0"                # (optional) specify SMB version
-    ];
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/etc/smb-credentials"];
   };
 
   system.stateVersion = "24.05";
