@@ -12,7 +12,7 @@ imports = [
 
   networking.hostName = "pavilion";
 
-  environment.systemPackages = [ pkgs.soulseekqt ];
+  environment.systemPackages = [ pkgs.nicotine-plus ];
   
   user.guillaume = {
     enable = true;

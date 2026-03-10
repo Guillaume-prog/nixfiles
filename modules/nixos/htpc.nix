@@ -65,7 +65,7 @@ in {
     };
 
     # Force Steam session (bypasses GNOME entirely)
-    services.xserver.displayManager.defaultSession = "steam";
+    services.displayManager.defaultSession = "steam";
     #services.xserver.desktopManager.gnome.enable = lib.mkForce false;
 
     # Controller & input support
@@ -79,10 +79,10 @@ in {
     };
 
     # Prevent sleep / lock
-    services.xserver.displayManager.gdm.autoSuspend = false;
+    services.displayManager.gdm.autoSuspend = false;
 
     # Useful defaults for HTPCs
-    hardware.opengl.enable = true;
+    hardware.graphics.enable = true;
 
     # Optional: ensure graphical boot
     systemd.defaultUnit = "graphical.target";

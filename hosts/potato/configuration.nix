@@ -17,7 +17,7 @@
 
   # Headless mode
   services.xserver.enable = false;
-  services.logind.lidSwitch = "ignore";
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
   console.keyMap = "fr";
 
   # SSH
@@ -51,7 +51,6 @@
     # Credentials
     options = [
       "credentials=/etc/smb-credentials"
-      "noauto"                  # don't try mounting immediately at boot
       "nofail"                  # boot continues even if mount fails
       "_netdev"                 # mark as network device, waits for network
       "vers=3.0"                # (optional) specify SMB version
