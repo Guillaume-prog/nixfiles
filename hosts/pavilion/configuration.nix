@@ -12,7 +12,7 @@ imports = [
 
   networking.hostName = "pavilion";
 
-  environment.systemPackages = [ pkgs.nicotine-plus ];
+  environment.systemPackages = with pkgs; [ nicotine-plus  beets ];
   
   user.guillaume = {
     enable = true;
