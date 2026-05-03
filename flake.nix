@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     alacritty-themes = {
       url = "github:alacritty/alacritty-theme";
       flake = false;
@@ -49,14 +54,14 @@
     };
 
     create-system = name: nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit self inputs pkgs unstable-pkgs flake-path; };
+      specialArgs = { inherit self inputs unstable-pkgs flake-path; };
       modules = [ 
         inputs.sops-nix.nixosModules.sops
         ./hosts/${name}/configuration.nix
         {
-          imports = [
-            inputs.nixpkgs.nixosModules.readOnlyPkgs
-          ];
+          # imports = [
+          #   inputs.nixpkgs.nixosModules.readOnlyPkgs
+          # ];
 
           nixpkgs.pkgs = pkgs;
         }
@@ -68,6 +73,6 @@
       value = create-system name;
     }) hostnames);
   in {
-    nixosConfigurations = create-configurations [ "asus" "north" "wsl" "potato" "pavilion" ];
+    nixosConfigurations = create-configurations [ "asus" "north" "wsl" "optiplex" "potato" "pavilion" ];
   };
 }
