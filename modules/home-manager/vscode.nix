@@ -61,6 +61,7 @@
         # Nix config
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
+        "nixEnvSelector.useFlakes" = true;
 
         "nixpkgs" = {
           "expr" = "import (builtins.getFlake ${flake-path}).inputs.nixpkgs {}";
