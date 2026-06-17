@@ -5,6 +5,7 @@
     ../../modules/nixos/bootloader.nix
     ../../modules/nixos/nh.nix
     ../../modules/nixos/sops.nix
+    ../../modules/nixos/samba.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -36,7 +37,6 @@
   };
 
   environment.systemPackages = with pkgs; [ 
-    cifs-utils
     fastfetch 
     vim 
     tree 
@@ -54,18 +54,7 @@
   '';
 
   # Mount the NAS share
-  environment.etc."smb-credentials".source = config.sops.secrets."smb-credentials".path;
-
-  fileSystems."/mnt/nas" = {
-    device = "//nas.lan/media";
-    fsType = "cifs";
-
-    # Credentials
-    options = let
-      # this line prevents hanging on network split
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/smb-credentials"];
-  };
+  my.samba.enable = true;
 
   system.stateVersion = "24.05";
 

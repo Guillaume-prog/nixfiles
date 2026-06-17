@@ -34,6 +34,8 @@ imports = [
   # Keyboard layout
   keyboard.layout = "fr";
 
+  # Samba/NAS
+  my.samba.enable = true;
 
   system.stateVersion = "25.11";
 }

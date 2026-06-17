@@ -15,6 +15,7 @@
     # ./syncthing.nix
     ./nh.nix
     ./users.nix
+    ./samba.nix
     ./screen-share.nix
     ./sops.nix
   ];
