@@ -26,16 +26,9 @@
     enable32Bit = true;
   };
 
-  # Bluetooth CM748 kernel patch: https://stackoverflow.com/a/79716173/10304753
-  # ===============================
+  # Bluetooth 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  boot.kernelPatches = [{
-    name = "cm748-patch";
-    patch = ./cm748.patch;
-  }];
-  # ===============================
 
   virtualisation.docker.enable = true;
   users.users.guillaume.extraGroups = [ "docker" ];
