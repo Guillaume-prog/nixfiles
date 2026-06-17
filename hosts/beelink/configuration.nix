@@ -12,7 +12,11 @@ imports = [
   boot.loader.grub.efiInstallAsRemovable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  environment.systemPackages = with pkgs; [ nicotine-plus  beets ];
+  environment.systemPackages = with pkgs; [ 
+    nicotine-plus  # Music downloader
+    beets # Music library manager
+    calibre # EPUB library manager
+  ];
   
   user.guillaume = {
     enable = true;
