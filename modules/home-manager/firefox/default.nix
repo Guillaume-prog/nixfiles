@@ -1,7 +1,7 @@
 {pkgs, lib, ...}: 
 let
   defaultSearchEngine = "ddg";
-  homepage = "https://lilougui.xyz";
+  homepage = "https://chaoshome.dev";
 
   customAddons = pkgs.callPackage ./addons.nix {
     inherit lib;

@@ -2,7 +2,7 @@
 {
   igplus-extension = buildFirefoxXpiAddon rec {
     pname = "igplus-extension";
-    version = "3.0.5.1";
+    version = "3.1.0";
     addonId = "{8e41107d-2be2-454d-b4b8-c3d7e54d77de}";
     url = "https://addons.mozilla.org/firefox/downloads/file/4475061/${pname}-${version}.xpi";
     sha256 = "sha256-V6fIrAux7CU2wtXsOKrs5SkBpDZD39CXdTfECuy1UuQ=";
