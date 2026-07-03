@@ -41,7 +41,7 @@
     vim 
     tree 
     lazydocker 
-    python312 
+    python3 
   ];
 
   virtualisation.docker.enable = true;

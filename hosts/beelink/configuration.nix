@@ -11,12 +11,6 @@ imports = [
   # bootloader stuff
   boot.loader.grub.efiInstallAsRemovable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  environment.systemPackages = with pkgs; [ 
-    nicotine-plus  # Music downloader
-    beets # Music library manager
-    calibre # EPUB library manager
-  ];
   
   user.guillaume = {
     enable = true;
@@ -34,8 +28,8 @@ imports = [
   # Keyboard layout
   keyboard.layout = "fr";
 
-  # Samba/NAS
   my.samba.enable = true;
+  my.software.media.enable = true;
 
   system.stateVersion = "25.11";
 }

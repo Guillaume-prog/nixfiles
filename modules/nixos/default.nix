@@ -4,11 +4,13 @@
     inputs.home-manager.nixosModules.default
     ../desktop/gnome/configuration.nix
     ./bootloader.nix
+    ./cli-utils.nix
     ./localisation.nix
     ./fonts.nix
     ./htpc.nix
     ./iphone.nix
     ./keyboard.nix
+    ./media-software.nix
     ./printer.nix
     ./samba.nix
     ./steam.nix
@@ -65,22 +67,13 @@
 
   environment.systemPackages = with pkgs; [
     git
-    vlc
-    nmap
-    ncdu
-    mlocate
-    usbutils
+    vlc  
   ];
 
   environment.interactiveShellInit = ''
     alias nx-edit="code ${flake-path}"
     alias nx-update="pushd ${flake-path};sudo nix flake update; nh os switch;popd"
   '';
-
-  services.locate = {
-    enable = true;
-    package = pkgs.mlocate;
-  };
 
   screen-share.enable = true;
 
