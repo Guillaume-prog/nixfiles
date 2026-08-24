@@ -1,15 +1,13 @@
-{ pkgs, unstable-pkgs, hostname, flake-path, ... }: {
+{ pkgs, hostname, flake-path, ... }: {
 
   home.packages = with pkgs; [
     alejandra # Nix formatter
     nixd # Nix LSP
-    fritzing
-    godot_4
   ];
 
   programs.vscode = {
     enable = true;
-    package = unstable-pkgs.vscode;
+    package = pkgs.vscodium;
     mutableExtensionsDir = false;
 
     profiles.default = {
@@ -17,10 +15,11 @@
       enableExtensionUpdateCheck = false;
 
       # keep extensions minimal, additionnal extensions will be installed per project
-      extensions = with unstable-pkgs.vscode-extensions; [
+      extensions = with pkgs.vscode-extensions; [
         # Nix editing
         jnoortheen.nix-ide
         arrterian.nix-env-selector
+        kamadorueda.alejandra
 
         # Better errors
         usernamehw.errorlens
@@ -39,13 +38,6 @@
 
         editorconfig.editorconfig
         esbenp.prettier-vscode
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "copilot-chat";
-          publisher = "github";
-          version = "0.37.4";
-          sha256 = "sha256-as8aU8NIAe60qV2VihBa4ueOm23nBAos3AAyLA0Smhs=";
-        }
       ];
 
       userSettings = {
@@ -62,18 +54,6 @@
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nixEnvSelector.useFlakes" = true;
-
-        "nixpkgs" = {
-          "expr" = "import (builtins.getFlake ${flake-path}).inputs.nixpkgs {}";
-        };
-
-        "formatting" = {
-          "command" = [ "alejandra" ];
-        };
-
-        "options" = {
-          "expr" = "(builtins.getFlake ${flake-path}).nixosConfigurations.${hostname}.options";
-        };
       };
     };
   };

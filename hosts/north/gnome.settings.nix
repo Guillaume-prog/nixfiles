@@ -1,6 +1,6 @@
 {
 
-favorite-apps = ["firefox.desktop" "vesktop.desktop" "code.desktop" "steam.desktop" "org.prismlauncher.PrismLauncher.desktop" "org.gnome.Nautilus.desktop"];
+favorite-apps = ["firefox.desktop" "vesktop.desktop" "codium.desktop" "steam.desktop" "org.prismlauncher.PrismLauncher.desktop" "org.gnome.Nautilus.desktop"];
 app-folders = ["Desktop" "Utilities" "System" "3d2ca924-addb-449a-9453-5a52d6ebee50" "22eab952-e707-4e0f-9008-6e6f5128d639" "c54c3ba9-895e-49ea-a4b9-4b58b567bbd3"];
 app-tray = [["Desktop" "System" "Utilities" "3d2ca924-addb-449a-9453-5a52d6ebee50" "22eab952-e707-4e0f-9008-6e6f5128d639" "c54c3ba9-895e-49ea-a4b9-4b58b567bbd3" "org.gnome.SimpleScan.desktop" "plex-htpc.desktop" "org.nicotine_plus.Nicotine.desktop" "beepertexts.desktop" "org.bunkus.mkvtoolnix-gui.desktop" "org.pulseaudio.pavucontrol.desktop" "obsidian.desktop" "netbird.desktop"]];
 

@@ -1,3 +1,11 @@
 {
-    "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix"
+    "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix",
+    
+    "[nix]": {
+        "editor.defaultFormatter": "kamadorueda.alejandra",
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": false
+    },
+    "alejandra.program": "alejandra"
 }

@@ -68,7 +68,7 @@
   ];
 
   environment.interactiveShellInit = ''
-    alias nx-edit="code ${flake-path}"
+    alias nx-edit="codium ${flake-path}"
     alias nx-update="pushd ${flake-path};sudo nix flake update; nh os switch;popd"
     alias nx-gnome="bash ${flake-path}/modules/desktop/gnome/home/app-layout/update.sh"
   '';
