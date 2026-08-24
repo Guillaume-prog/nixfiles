@@ -10,8 +10,6 @@
 
   config = lib.mkIf config.software.gaming.enable {
     home.packages = (with pkgs; [
-      wine
-      lutris
       prismlauncher
     ]) ++ (with unstable-pkgs; [
       owmods-cli
