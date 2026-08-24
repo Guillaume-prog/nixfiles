@@ -1,5 +1,4 @@
-{ inputs, pkgs, ... }:
-
+{ inputs, pkgs, lib, ... }:
 {
   imports = [
     ../../modules/nixos
@@ -36,27 +35,37 @@
   # my.htpc.enable = true;
   # my.htpc.user = "guillaume";
 
-  # services.displayManager = {
-  #   gdm.enable = true;
-  #   autoLogin =  {
+  my.samba.nas.enable = true;
+  my.software.media.enable = true;
+  my.gnome.autologin.user = "guillaume";
+
+  # jovian = {
+  #   hardware.has.amd.gpu = true;
+  #   steamos.useSteamOSConfig = true;
+  #   steam = {
+  #     updater.splash = "vendor";
   #     enable = true;
+  #     autoStart = true;
   #     user = "guillaume";
+  #     desktopSession = "gnome";
   #   };
   # };
 
-  jovian = {
-    hardware.has.amd.gpu = true;
-    steamos.useSteamOSConfig = true;
-    steam = {
-      updater.splash = "vendor";
-      enable = true;
-      autoStart = true;
-      user = "guillaume";
-      desktopSession = "gnome";
-    };
-  };
+  environment.systemPackages = with pkgs; [ 
+    plex-htpc 
+    libreoffice
+  ];
 
-  environment.systemPackages = [ pkgs.plex-htpc ];
+  programs.steam = lib.mkForce {
+    enable = true;
+    package = pkgs.steam.override {
+      extraLibraries = p: with p; [
+        libGL
+      ];
+    };
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

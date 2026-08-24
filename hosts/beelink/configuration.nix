@@ -28,7 +28,7 @@ imports = [
   # Keyboard layout
   keyboard.layout = "fr";
 
-  my.samba.enable = true;
+  my.samba.nas.enable = true;
   my.software.media.enable = true;
 
   system.stateVersion = "25.11";

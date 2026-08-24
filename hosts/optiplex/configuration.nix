@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   imports = [
     ./hardware-configuration.nix
@@ -40,6 +40,7 @@
     fastfetch 
     vim 
     tree 
+    ncdu
     lazydocker 
     python3 
   ];
@@ -54,7 +55,13 @@
   '';
 
   # Mount the NAS share
-  my.samba.enable = true;
+  my.samba = {
+    nas.enable = true;
+    pictures.enable = true;
+  };
+
+  services.localtimed.enable = true;
+  time.timeZone = lib.mkForce "Europe/Paris";
 
   system.stateVersion = "24.05";
 
