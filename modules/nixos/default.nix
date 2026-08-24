@@ -8,17 +8,14 @@
     ./localisation.nix
     ./fonts.nix
     ./htpc.nix
-    ./iphone.nix
     ./keyboard.nix
     ./media-software.nix
+    ./misc-software.nix
     ./printer.nix
     ./samba.nix
     ./steam.nix
-    # ./syncthing.nix
     ./nh.nix
     ./users.nix
-    ./samba.nix
-    ./screen-share.nix
     ./sops.nix
   ];
 

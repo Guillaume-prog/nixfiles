@@ -12,49 +12,8 @@
     ./ssh.nix
   ];
 
-  options.software = let
-    enableOpt = lib.mkOption {
-      type = lib.types.bool;
-      description = "Activate this piece of software";
-      default = false;
-    };
-  in {
-    anydesk.enable = enableOpt;
-    cura.enable = enableOpt;
-    fragments.enable = enableOpt;
-    
 
-    discord.package = lib.mkOption {
-      type = lib.types.package;
-      description = "Which package to use for discord";
-    };
-  };
-
-  config = let 
-    cfg = config.software;
-
-    optional-packages = list: lib.pipe list [
-      (builtins.filter (x: cfg.${x}.enable))
-      (builtins.map (x: pkgs.${x}))
-    ];
-  in {
-    home.packages = (optional-packages [
-      "anydesk"
-      "cura"
-      "fragments"
-    ]) ++ [
-      cfg.discord.package
-    ] ++ (with pkgs; [
-      inkscape
-    ]) ++ (with unstable-pkgs; [
-      beeper
-      gimp
-      obsidian
-    ]);
-
-    
-    home.keyboard = null;
-    home.stateVersion = "23.11";
-    programs.home-manager.enable = true;
-  };
+  home.keyboard = null;
+  home.stateVersion = "23.11";
+  programs.home-manager.enable = true;
 }
