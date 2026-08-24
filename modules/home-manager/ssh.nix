@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   home.file.".ssh/config".text = ''
     Host hass
       HostName 192.168.1.201

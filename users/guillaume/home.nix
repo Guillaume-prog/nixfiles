@@ -1,6 +1,4 @@
-{ hostname, ... }:
-
-{ 
+{hostname, ...}: {
   imports = [
     ../../modules/home-manager
   ];
@@ -22,5 +20,4 @@
   };
 
   software.gaming.enable = true;
-
 }

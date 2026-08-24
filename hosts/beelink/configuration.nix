@@ -1,7 +1,9 @@
-{ pkgs, lib, ... }:
-
 {
-imports = [
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
   ];
@@ -11,7 +13,7 @@ imports = [
   # bootloader stuff
   boot.loader.grub.efiInstallAsRemovable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   user.guillaume = {
     enable = true;
     home-config = ../../users/guillaume/home.nix;
@@ -19,7 +21,7 @@ imports = [
 
   services.displayManager = {
     gdm.enable = true;
-    autoLogin =  {
+    autoLogin = {
       enable = true;
       user = "guillaume";
     };

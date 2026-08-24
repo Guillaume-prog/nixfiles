@@ -1,5 +1,11 @@
-{ pkgs, inputs, unstable-pkgs, flake-path, config, ... }: {
-
+{
+  pkgs,
+  inputs,
+  unstable-pkgs,
+  flake-path,
+  config,
+  ...
+}: {
   imports = [
     inputs.home-manager.nixosModules.default
     ../desktop/gnome/configuration.nix
@@ -22,13 +28,13 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   my.bootloader.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   home-manager = {
-    extraSpecialArgs = { 
-      inherit inputs pkgs unstable-pkgs flake-path; 
-      hostname = config.networking.hostName; 
+    extraSpecialArgs = {
+      inherit inputs pkgs unstable-pkgs flake-path;
+      hostname = config.networking.hostName;
     };
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
@@ -59,12 +65,12 @@
   users.users.guillaume = {
     isNormalUser = true;
     description = "Guillaume";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   environment.systemPackages = with pkgs; [
     git
-    vlc  
+    vlc
   ];
 
   environment.interactiveShellInit = ''
@@ -81,5 +87,4 @@
   # SSH
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [22];
-
 }

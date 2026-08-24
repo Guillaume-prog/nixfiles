@@ -1,5 +1,9 @@
-{ unstable-pkgs, lib, config, ... }:
 {
+  unstable-pkgs,
+  lib,
+  config,
+  ...
+}: {
   options.screen-share = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -67,5 +71,4 @@
     #   passwordFile = "/etc/x11vnc.pass"; # Run once: echo "yourpassword" | x11vnc -storepasswd - /etc/x11vnc.pass
     # };
   };
-
 }

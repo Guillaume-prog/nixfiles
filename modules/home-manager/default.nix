@@ -1,6 +1,10 @@
-{ pkgs, unstable-pkgs, lib, config, ... }:
-
 {
+  pkgs,
+  unstable-pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ../desktop/gnome/home
     ./firefox
@@ -11,7 +15,6 @@
     ./vscode.nix
     ./ssh.nix
   ];
-
 
   home.keyboard = null;
   home.stateVersion = "23.11";

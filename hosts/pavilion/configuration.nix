@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-imports = [
+{pkgs, ...}: {
+  imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
   ];
@@ -12,8 +10,8 @@ imports = [
 
   networking.hostName = "pavilion";
 
-  environment.systemPackages = with pkgs; [ nicotine-plus  beets ];
-  
+  environment.systemPackages = with pkgs; [nicotine-plus beets];
+
   user.guillaume = {
     enable = true;
     home-config = ../../users/guillaume/home.nix;

@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     nmap
     ncdu
@@ -12,5 +11,4 @@
     enable = true;
     package = pkgs.mlocate;
   };
-
 }

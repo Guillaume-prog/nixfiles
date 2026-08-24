@@ -1,55 +1,57 @@
-{ inputs, pkgs, unstable-pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  unstable-pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    fastfetch
+    tree
+    vim
+    tmux
+    lazydocker
+    jq
+    yq
+  ];
 
-    home.packages = with pkgs; [
-        fastfetch
-        tree
-        vim
-        tmux
-        lazydocker
-        jq
-        yq
-    ];
+  programs.alacritty = {
+    enable = true;
 
-    programs.alacritty = {
-        enable = true;
-    
-        settings = {
-            general.import = [
-                "${inputs.alacritty-themes}/themes/catpuccin-machiatto.toml"
-            ];
+    settings = {
+      general.import = [
+        "${inputs.alacritty-themes}/themes/catpuccin-machiatto.toml"
+      ];
 
-            font.normal = {
-                family = "Iosevka Nerd Font";
-                style = "Regular";
-            };
+      font.normal = {
+        family = "Iosevka Nerd Font";
+        style = "Regular";
+      };
 
-            window.padding = {
-                x = 8;
-                y = 8;
-            };
-        };
+      window.padding = {
+        x = 8;
+        y = 8;
+      };
     };
+  };
 
-    programs.oh-my-posh = {
-        enable = true;
-        package = unstable-pkgs.oh-my-posh;
-        enableBashIntegration = true;
-        settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./posh.omp.json));
-    };
+  programs.oh-my-posh = {
+    enable = true;
+    package = unstable-pkgs.oh-my-posh;
+    enableBashIntegration = true;
+    settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./posh.omp.json));
+  };
 
-    programs.direnv = {
-        enable = true;
-        enableBashIntegration = true;
-        nix-direnv.enable = true;
-    };
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
 
-    programs.bash = {
-        enable = true;
-    };
+  programs.bash = {
+    enable = true;
+  };
 
-
-    home.file.".config/direnv/direnv.toml".text = ''
-        hide_env_diff = true
-    '';
-
+  home.file.".config/direnv/direnv.toml".text = ''
+    hide_env_diff = true
+  '';
 }

@@ -1,6 +1,8 @@
-{ lib, config, ... }:
-
-let 
+{
+  lib,
+  config,
+  ...
+}: let
   cfg = config.user;
 
   user-options = with lib; {
@@ -17,21 +19,19 @@ let
     };
   };
 
-  configure-user = name: 
-  let 
+  configure-user = name: let
     username = lib.toLower name;
-  in lib.mkIf cfg.${username}.enable {
-    users.users.${username} = {
-      isNormalUser = true;
-      description = name;
-      extraGroups = [ "networkmanager" "wheel" ];
+  in
+    lib.mkIf cfg.${username}.enable {
+      users.users.${username} = {
+        isNormalUser = true;
+        description = name;
+        extraGroups = ["networkmanager" "wheel"];
+      };
+
+      home-manager.users.${username} = import cfg.${username}.home-config;
     };
-
-    home-manager.users.${username} = import cfg.${username}.home-config;
-  };
-in 
-
-{
+in {
   options.user = {
     guillaume = user-options;
   };

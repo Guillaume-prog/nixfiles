@@ -1,8 +1,10 @@
-{ lib, config, ... }: 
-let
-  cfg = config.my.desktop.gnome;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.my.desktop.gnome;
+in {
   options.my.desktop.gnome.wallpaper = with lib; {
     image = mkOption {
       type = types.anything;
@@ -15,17 +17,13 @@ in
     secondary = mkOption {
       type = types.str;
     };
-
   };
 
-  config = 
-  let
+  config = let
     path = "${config.home.homeDirectory}/.background-image";
-  in 
-  {
-
+  in {
     home.file.".background-image".source = cfg.wallpaper.image;
-    
+
     dconf.settings = {
       "org/gnome/desktop/background" = {
         color-shading-type = "solid";
@@ -44,6 +42,5 @@ in
         secondary-color = cfg.wallpaper.secondary;
       };
     };
-
   };
 }

@@ -1,13 +1,11 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
   ];
 
   networking.hostName = "thinkpad";
-  
+
   user.guillaume = {
     enable = true;
     home-config = ../../users/guillaume/home.nix;
@@ -16,8 +14,8 @@
   # Keyboard layout
   keyboard.layout = "fr";
 
-    virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "guillaume" ];
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = ["guillaume"];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

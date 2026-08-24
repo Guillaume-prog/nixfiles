@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     libimobiledevice
     ifuse
@@ -10,10 +9,9 @@
     package = pkgs.usbmuxd2;
   };
 
-  programs.bash.shellAliases = let 
+  programs.bash.shellAliases = let
     loc = "/tmp/iphone";
   in {
     iphone = "mkdir -p ${loc}; ifuse ${loc}; nautilus ${loc}";
   };
-
 }

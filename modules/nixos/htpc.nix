@@ -1,8 +1,11 @@
-{ unstable-pkgs, lib, config, ... }: 
-let 
+{
+  unstable-pkgs,
+  lib,
+  config,
+  ...
+}: let
   cfg = config.my.htpc;
 in {
-
   options.my.htpc = with lib; {
     enable = mkEnableOption "HTPC";
     user = mkOption {
@@ -13,7 +16,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-
     environment.systemPackages = with unstable-pkgs; [
       steam
       gamescope
@@ -69,7 +71,7 @@ in {
     #services.xserver.desktopManager.gnome.enable = lib.mkForce false;
 
     # Controller & input support
-    services.udev.packages = [ unstable-pkgs.game-devices-udev-rules ];
+    services.udev.packages = [unstable-pkgs.game-devices-udev-rules];
 
     # Power management (console behavior)
     services.logind.settings.Login = {
@@ -86,6 +88,5 @@ in {
 
     # Optional: ensure graphical boot
     systemd.defaultUnit = "graphical.target";
-
   };
 }

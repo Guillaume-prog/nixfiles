@@ -1,8 +1,10 @@
-{ pkgs, lib, config, ... }:
-
-with lib;
-
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
   cfg = config.git;
 in {
   options.git = {
@@ -20,7 +22,7 @@ in {
   config = {
     programs.git = {
       enable = true;
-      
+
       extraConfig = {
         init.defaultBranch = "main";
         push.autoSetupRemote = true;

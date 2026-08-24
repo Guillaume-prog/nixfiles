@@ -6,7 +6,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nur.url = "github:nix-community/nur";
-    
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,13 +33,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: 
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     flake-path = "/nixfiles";
 
-    pkgs = import nixpkgs { 
-      inherit system; 
+    pkgs = import nixpkgs {
+      inherit system;
       overlays = [
         inputs.nur.overlays.default
       ];
@@ -47,32 +50,35 @@
       config.allowUnfreePredicate = _: true;
     };
 
-    unstable-pkgs = import inputs.nixpkgs-unstable { 
-      inherit system; 
+    unstable-pkgs = import inputs.nixpkgs-unstable {
+      inherit system;
       config.allowUnfree = true;
       config.allowUnfreePredicate = _: true;
     };
 
-    create-system = name: nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit self inputs unstable-pkgs flake-path; };
-      modules = [ 
-        inputs.sops-nix.nixosModules.sops
-        ./hosts/${name}/configuration.nix
-        {
-          # imports = [
-          #   inputs.nixpkgs.nixosModules.readOnlyPkgs
-          # ];
+    create-system = name:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit self inputs unstable-pkgs flake-path;};
+        modules = [
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/${name}/configuration.nix
+          {
+            # imports = [
+            #   inputs.nixpkgs.nixosModules.readOnlyPkgs
+            # ];
 
-          nixpkgs.pkgs = pkgs;
-        }
-      ];
-    };
+            nixpkgs.pkgs = pkgs;
+          }
+        ];
+      };
 
-    create-configurations = hostnames: builtins.listToAttrs (map (name: {
-      name = name;
-      value = create-system name;
-    }) hostnames);
+    create-configurations = hostnames:
+      builtins.listToAttrs (map (name: {
+          name = name;
+          value = create-system name;
+        })
+        hostnames);
   in {
-    nixosConfigurations = create-configurations [ "asus" "beelink" "north" "wsl" "optiplex" "potato" "thinkpad" "pavilion" ];
+    nixosConfigurations = create-configurations ["asus" "beelink" "north" "wsl" "optiplex" "potato" "thinkpad" "pavilion"];
   };
 }

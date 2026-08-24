@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   home.packages = [
     pkgs.diff-so-fancy
   ];
@@ -10,7 +9,7 @@
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      # Git aliases 
+      # Git aliases
       alias ga='git add'
       alias gap='ga --patch'
       alias gb='git branch'
@@ -32,5 +31,4 @@
       alias gu='git pull'
     '';
   };
-
 }

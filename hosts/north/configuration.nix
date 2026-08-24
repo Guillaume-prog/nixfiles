@@ -1,5 +1,9 @@
-{ inputs, pkgs, lib, ... }:
 {
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
@@ -18,19 +22,19 @@
 
   # enable GPU
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  # Bluetooth 
+  # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   virtualisation.docker.enable = true;
-  users.users.guillaume.extraGroups = [ "docker" ];
+  users.users.guillaume.extraGroups = ["docker"];
 
   # my.htpc.enable = true;
   # my.htpc.user = "guillaume";
@@ -51,17 +55,18 @@
   #   };
   # };
 
-  environment.systemPackages = with pkgs; [ 
-    plex-htpc 
+  environment.systemPackages = with pkgs; [
+    plex-htpc
     libreoffice
   ];
 
   programs.steam = lib.mkForce {
     enable = true;
     package = pkgs.steam.override {
-      extraLibraries = p: with p; [
-        libGL
-      ];
+      extraLibraries = p:
+        with p; [
+          libGL
+        ];
     };
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
@@ -74,5 +79,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

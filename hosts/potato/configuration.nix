@@ -1,5 +1,8 @@
-{ pkgs, config, ... }: {
-
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/sops.nix
@@ -31,13 +34,13 @@
     extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     cifs-utils
-    fastfetch 
-    vim 
-    tree 
-    lazydocker 
-    python312 
+    fastfetch
+    vim
+    tree
+    lazydocker
+    python312
   ];
 
   virtualisation.docker.enable = true;
@@ -64,5 +67,4 @@
   };
 
   system.stateVersion = "24.05";
-
 }

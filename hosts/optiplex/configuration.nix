@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }: {
-
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/bootloader.nix
@@ -36,13 +39,13 @@
     extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
-  environment.systemPackages = with pkgs; [ 
-    fastfetch 
-    vim 
-    tree 
+  environment.systemPackages = with pkgs; [
+    fastfetch
+    vim
+    tree
     ncdu
-    lazydocker 
-    python3 
+    lazydocker
+    python3
   ];
 
   virtualisation.docker.enable = true;
@@ -64,5 +67,4 @@
   time.timeZone = lib.mkForce "Europe/Paris";
 
   system.stateVersion = "24.05";
-
 }

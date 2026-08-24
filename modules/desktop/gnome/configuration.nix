@@ -1,9 +1,11 @@
-{ pkgs, lib, config, ... }: 
-let 
-  cfg = config.my.gnome;
-in 
 {
-  
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.my.gnome;
+in {
   options.my.gnome.autologin = with lib; {
     user = mkOption {
       type = types.str;
@@ -19,7 +21,7 @@ in
     services.displayManager = {
       gdm.enable = true;
       autoLogin = {
-        enable = (cfg.autologin.user != "");
+        enable = cfg.autologin.user != "";
         user = cfg.autologin.user;
       };
     };
@@ -35,45 +37,45 @@ in
       "" # extra line to work around systemd's list concatenation shenanigans
       "${pkgs.bluez}/libexec/bluetooth/bluetoothd -f /etc/bluetooth/main.conf --experimental"
     ];
-    
+
     # configure default applications for apps
     xdg.mime = {
       enable = true;
 
       defaultApplications = {
         # Image
-        "image/jpeg" = [ "org.gnome.eog.desktop" ];
-        "image/png"  = [ "org.gnome.eog.desktop" ];
-        "image/gif"  = [ "org.gnome.eog.desktop" ];
+        "image/jpeg" = ["org.gnome.eog.desktop"];
+        "image/png" = ["org.gnome.eog.desktop"];
+        "image/gif" = ["org.gnome.eog.desktop"];
 
         # Video
-        "video/mp4"  = [ "org.gnome.Totem.desktop" ];
-        "video/x-matroska" = [ "org.gnome.Totem.desktop" ];
+        "video/mp4" = ["org.gnome.Totem.desktop"];
+        "video/x-matroska" = ["org.gnome.Totem.desktop"];
 
         # Text
-        "text/plain" = [ "org.gnome.gedit.desktop" ];
+        "text/plain" = ["org.gnome.gedit.desktop"];
 
         # PDF
-        "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "application/pdf" = ["org.gnome.Evince.desktop"];
 
         # Archives
-        "application/zip"              = [ "org.gnome.FileRoller.desktop" ];
-        "application/x-tar"            = [ "org.gnome.FileRoller.desktop" ];
-        "application/x-bzip2"          = [ "org.gnome.FileRoller.desktop" ];
-        "application/x-gzip"           = [ "org.gnome.FileRoller.desktop" ];
-        "application/x-7z-compressed"  = [ "org.gnome.FileRoller.desktop" ];
-        "application/x-rar"            = [ "org.gnome.FileRoller.desktop" ];
-        "application/vnd.rar"          = [ "org.gnome.FileRoller.desktop" ];
-        "application/x-archive"        = [ "org.gnome.FileRoller.desktop" ];
+        "application/zip" = ["org.gnome.FileRoller.desktop"];
+        "application/x-tar" = ["org.gnome.FileRoller.desktop"];
+        "application/x-bzip2" = ["org.gnome.FileRoller.desktop"];
+        "application/x-gzip" = ["org.gnome.FileRoller.desktop"];
+        "application/x-7z-compressed" = ["org.gnome.FileRoller.desktop"];
+        "application/x-rar" = ["org.gnome.FileRoller.desktop"];
+        "application/vnd.rar" = ["org.gnome.FileRoller.desktop"];
+        "application/x-archive" = ["org.gnome.FileRoller.desktop"];
 
         # Audio
-        "audio/mpeg"        = [ "org.gnome.Music.desktop" ]; # mp3
-        "audio/flac"        = [ "org.gnome.Music.desktop" ];
-        "audio/ogg"         = [ "org.gnome.Music.desktop" ];
-        "audio/wav"         = [ "org.gnome.Music.desktop" ];
-        "audio/x-wav"       = [ "org.gnome.Music.desktop" ];
-        "audio/x-m4a"       = [ "org.gnome.Music.desktop" ];
-        "audio/aac"         = [ "org.gnome.Music.desktop" ];
+        "audio/mpeg" = ["org.gnome.Music.desktop"]; # mp3
+        "audio/flac" = ["org.gnome.Music.desktop"];
+        "audio/ogg" = ["org.gnome.Music.desktop"];
+        "audio/wav" = ["org.gnome.Music.desktop"];
+        "audio/x-wav" = ["org.gnome.Music.desktop"];
+        "audio/x-m4a" = ["org.gnome.Music.desktop"];
+        "audio/aac" = ["org.gnome.Music.desktop"];
       };
     };
 
@@ -95,7 +97,7 @@ in
 
     # Desktop packages to exclude
 
-    services.xserver.excludePackages = [ pkgs.xterm ];
+    services.xserver.excludePackages = [pkgs.xterm];
     documentation.nixos.enable = false;
 
     environment.gnome.excludePackages = with pkgs; [
@@ -121,6 +123,5 @@ in
       totem # video player
       yelp # Help view
     ];
-    
   };
 }

@@ -1,10 +1,9 @@
-{ lib, ... }: 
+{lib, ...}:
 with lib.hm.gvariant; {
-  
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       current = mkUint32 0;
-      sources = [ (mkTuple [ "xkb" "fr" ]) ];
+      sources = [(mkTuple ["xkb" "fr"])];
     };
   };
 
@@ -15,5 +14,4 @@ with lib.hm.gvariant; {
     ./shortcuts.nix
     ./trackpad.nix
   ];
-
 }

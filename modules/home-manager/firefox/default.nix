@@ -1,5 +1,9 @@
-{pkgs, lib, config, ...}: 
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   defaultSearchEngine = "ddg";
   homepage = "https://chaoshome.dev";
 
@@ -7,9 +11,7 @@ let
     inherit lib;
     inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
   };
-in
-{
-
+in {
   # options.my.programs.firefox = {
   #   enable = lib.mkEnableOption "Firefox web browser";
   # };
@@ -18,21 +20,22 @@ in
     enable = true;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.guillaume = {
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons;
+        [
+          simple-tab-groups
+          auto-tab-discard
 
-      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        simple-tab-groups
-        auto-tab-discard
-        
-        bitwarden
-        languagetool
+          bitwarden
+          languagetool
 
-        ublock-origin
-        sponsorblock
-        cookie-autodelete
-        i-dont-care-about-cookies
-        
-        youtube-shorts-block
-      ] ++ (with customAddons; [ igplus-extension ]);
+          ublock-origin
+          sponsorblock
+          cookie-autodelete
+          i-dont-care-about-cookies
+
+          youtube-shorts-block
+        ]
+        ++ (with customAddons; [igplus-extension]);
 
       settings = {
         # How to figure out which setting to change:
@@ -112,46 +115,55 @@ in
       };
 
       search = {
-            force = true;
-            default = defaultSearchEngine;
-            order = [ defaultSearchEngine "Nix Packages" "Nix Options" "NixOS Wiki" ];
-            engines = {
-              "Nix Packages" = {
-                urls = [{
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
-                icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
-              };
-
-              "Nix Options" = {
-                urls = [{
-                  template = "https://search.nixos.org/options";
-                  params = [
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
-                icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@no" ];
-              };
-
-              "NixOS Wiki" = {
-                urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-                icon = "https://nixos.wiki/favicon.png";
-                updateInterval = 24 * 60 * 60 * 1000; # every day
-                definedAliases = [ "@nw" ];
-              };
-
-              google.metaData.hidden = true;
-              bing.metaData.hidden = true;
-              ebay.metaData.hidden = true;
-              wikipedia.metaData.hidden = true;
-            };
+        force = true;
+        default = defaultSearchEngine;
+        order = [defaultSearchEngine "Nix Packages" "Nix Options" "NixOS Wiki"];
+        engines = {
+          "Nix Packages" = {
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = ["@np"];
           };
 
+          "Nix Options" = {
+            urls = [
+              {
+                template = "https://search.nixos.org/options";
+                params = [
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = ["@no"];
+          };
+
+          "NixOS Wiki" = {
+            urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
+            icon = "https://nixos.wiki/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = ["@nw"];
+          };
+
+          google.metaData.hidden = true;
+          bing.metaData.hidden = true;
+          ebay.metaData.hidden = true;
+          wikipedia.metaData.hidden = true;
+        };
+      };
     };
   };
 

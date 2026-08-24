@@ -1,9 +1,8 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     beeper
     obsidian
-    
+
     gimp
     inkscape
 
@@ -13,5 +12,4 @@
     godot_4
     cura-appimage
   ];
-
 }

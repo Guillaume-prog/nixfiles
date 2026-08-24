@@ -1,6 +1,9 @@
-{ inputs, lib, config, ... }:
-
-let 
+{
+  inputs,
+  lib,
+  config,
+  ...
+}: let
   themePaths = {
     catpuccin-macchiato = "${inputs.catpuccin-grub}/src/catppuccin-macchiato-grub-theme";
   };
@@ -11,7 +14,7 @@ in {
     enable = mkEnableOption "Custom bootloader";
 
     bootMode = mkOption {
-      type = types.enum [ "legacy" "uefi" ];
+      type = types.enum ["legacy" "uefi"];
       default = "uefi";
       description = "Boot mode: legacy MBR or modern UEFI";
     };
@@ -37,7 +40,10 @@ in {
       useOSProber = true;
       theme = themePaths.${cfg.theme};
 
-      device = if cfg.bootMode == "legacy" then cfg.device else "nodev";
+      device =
+        if cfg.bootMode == "legacy"
+        then cfg.device
+        else "nodev";
       efiSupport = cfg.bootMode == "uefi";
       efiInstallAsRemovable = cfg.bootMode == "uefi";
     };

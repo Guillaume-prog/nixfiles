@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   # Set your time zone automatically.
   time.timeZone = "Europe/Paris";
 

@@ -1,8 +1,13 @@
-{ inputs, pkgs, unstable-pkgs, flake-path, config, ... }:
-let
-  wsl-user = "groussin";
-in
 {
+  inputs,
+  pkgs,
+  unstable-pkgs,
+  flake-path,
+  config,
+  ...
+}: let
+  wsl-user = "groussin";
+in {
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
@@ -11,20 +16,20 @@ in
   ];
 
   networking.hostName = "wsl";
-  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   users.users.${wsl-user} = {
     isNormalUser = true;
     description = "Guillaume Roussin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   home-manager = {
-    extraSpecialArgs = { 
-      inherit inputs pkgs unstable-pkgs flake-path; 
-      hostname = config.networking.hostName; 
+    extraSpecialArgs = {
+      inherit inputs pkgs unstable-pkgs flake-path;
+      hostname = config.networking.hostName;
     };
     backupFileExtension = "hm-backup";
   };
@@ -50,7 +55,7 @@ in
   };
 
   virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ wsl-user ];
+  users.extraGroups.docker.members = [wsl-user];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

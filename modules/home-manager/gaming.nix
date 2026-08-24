@@ -1,5 +1,10 @@
-{ pkgs, unstable-pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  unstable-pkgs,
+  lib,
+  config,
+  ...
+}: {
   options.software.gaming = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -8,14 +13,17 @@
     };
   };
 
-  config = lib.mkIf config.software.gaming.enable {
-    home.packages = (with pkgs; [
-      prismlauncher
-    ]) ++ (with unstable-pkgs; [
-      owmods-cli
-    ]);
-  } // {
-    home.packages = [ pkgs.prismlauncher ];
-  };
-
+  config =
+    lib.mkIf config.software.gaming.enable {
+      home.packages =
+        (with pkgs; [
+          prismlauncher
+        ])
+        ++ (with unstable-pkgs; [
+          owmods-cli
+        ]);
+    }
+    // {
+      home.packages = [pkgs.prismlauncher];
+    };
 }
