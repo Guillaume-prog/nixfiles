@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   lib,
   ...
@@ -7,7 +6,6 @@
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
-    inputs.jovian.nixosModules.default
   ];
 
   networking.hostName = "north";
@@ -33,32 +31,15 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  virtualisation.docker.enable = true;
-  users.users.guillaume.extraGroups = ["docker"];
-
-  # my.htpc.enable = true;
-  # my.htpc.user = "guillaume";
-
-  my.samba.nas.enable = true;
-  my.software.media.enable = true;
   my.gnome.autologin.user = "guillaume";
+  my.samba.nas.enable = true;
 
-  # jovian = {
-  #   hardware.has.amd.gpu = true;
-  #   steamos.useSteamOSConfig = true;
-  #   steam = {
-  #     updater.splash = "vendor";
-  #     enable = true;
-  #     autoStart = true;
-  #     user = "guillaume";
-  #     desktopSession = "gnome";
-  #   };
-  # };
-
-  environment.systemPackages = with pkgs; [
-    plex-htpc
-    libreoffice
-  ];
+  my.software.docker.enable = true;
+  my.software.desktop = {
+    enable = true;
+    media.enable = true;
+    office.enable = true;
+  };
 
   programs.steam = lib.mkForce {
     enable = true;
@@ -72,11 +53,5 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 }

@@ -11,12 +11,12 @@
     ../desktop/gnome/configuration.nix
     ./bootloader.nix
     ./cli-utils.nix
+    ./docker.nix
     ./localisation.nix
     ./fonts.nix
     ./htpc.nix
     ./keyboard.nix
-    ./media-software.nix
-    ./misc-software.nix
+    ./desktop-software.nix
     ./printer.nix
     ./samba.nix
     ./steam.nix
