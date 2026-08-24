@@ -1,4 +1,4 @@
-{pkgs, lib, ...}: 
+{pkgs, lib, config, ...}: 
 let
   defaultSearchEngine = "ddg";
   homepage = "https://chaoshome.dev";
@@ -16,6 +16,7 @@ in
 
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.guillaume = {
 
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [

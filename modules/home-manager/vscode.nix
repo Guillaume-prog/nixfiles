@@ -1,13 +1,16 @@
-{ pkgs, hostname, flake-path, ... }: {
-
+{
+  pkgs,
+  hostname,
+  flake-path,
+  ...
+}: {
   home.packages = with pkgs; [
     alejandra # Nix formatter
     nixd # Nix LSP
   ];
 
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
-    package = pkgs.vscodium;
     mutableExtensionsDir = false;
 
     profiles.default = {
@@ -57,5 +60,4 @@
       };
     };
   };
-
 }
