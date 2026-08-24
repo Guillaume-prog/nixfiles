@@ -15,8 +15,8 @@
   keyboard.layout = "fr";
 
   my.software.docker.enable = true;
-  my.software.desktop = {
-    enable = true;
+  my.software = {
+    desktop.enable = true;
     media.enable = true;
     office.enable = true;
   };

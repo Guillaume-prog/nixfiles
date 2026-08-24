@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
@@ -35,22 +31,11 @@
   my.samba.nas.enable = true;
 
   my.software.docker.enable = true;
-  my.software.desktop = {
-    enable = true;
+  my.software = {
+    desktop.enable = true;
+    gaming.enable = true;
     media.enable = true;
     office.enable = true;
-  };
-
-  programs.steam = lib.mkForce {
-    enable = true;
-    package = pkgs.steam.override {
-      extraLibraries = p:
-        with p; [
-          libGL
-        ];
-    };
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?

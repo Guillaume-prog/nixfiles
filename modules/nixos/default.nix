@@ -11,18 +11,20 @@
     ../desktop/gnome/configuration.nix
     ./bootloader.nix
     ./cli-utils.nix
+    ./desktop-software.nix
     ./docker.nix
-    ./localisation.nix
     ./fonts.nix
+    ./gaming.nix
     ./htpc.nix
     ./keyboard.nix
-    ./desktop-software.nix
+    ./localisation.nix
+    ./media-management.nix
+    ./nh.nix
+    ./office.nix
     ./printer.nix
     ./samba.nix
-    ./steam.nix
-    ./nh.nix
-    ./users.nix
     ./sops.nix
+    ./users.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

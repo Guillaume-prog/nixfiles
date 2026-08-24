@@ -18,6 +18,4 @@
     };
     app-layout = import "${host-path}/gnome.settings.nix";
   };
-
-  software.gaming.enable = true;
 }

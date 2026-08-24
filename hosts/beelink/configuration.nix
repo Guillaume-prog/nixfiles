@@ -19,19 +19,13 @@
     home-config = ../../users/guillaume/home.nix;
   };
 
-  services.displayManager = {
-    gdm.enable = true;
-    autoLogin = {
-      enable = true;
-      user = "guillaume";
-    };
-  };
-
   # Keyboard layout
   keyboard.layout = "fr";
 
-  my.samba.nas.enable = true;
-  my.software.media.enable = true;
+  my.gnome.autologin.user = "guillaume";
+  my.software.gaming.enable = true;
+
+  environment.systemPackages = [pkgs.plex-htpc];
 
   system.stateVersion = "25.11";
 }
