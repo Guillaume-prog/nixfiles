@@ -71,4 +71,4 @@ folders = $folders;
 }
 BLOCK
 ) 
-echo "$text" > $(dirname "$0")/settings.nix
+echo "$text" > /nixfiles/hosts/$(hostname)/gnome.settings.nix
