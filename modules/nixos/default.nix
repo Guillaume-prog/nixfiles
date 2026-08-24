@@ -72,8 +72,6 @@
     alias nx-update="pushd ${flake-path};sudo nix flake update; nh os switch;popd"
   '';
 
-  screen-share.enable = true;
-
   services.netbird = {
     enable = true;
     package = unstable-pkgs.netbird;

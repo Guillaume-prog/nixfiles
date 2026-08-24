@@ -1,6 +1,6 @@
 { lib, config, ... }: 
 {
-  options.gnome = with lib; {
+  options.my.desktop.gnome = with lib; {
     app-layout = mkOption {
       type = types.anything;
     };
@@ -9,7 +9,7 @@
   config =
   let
 
-    layout = config.gnome.app-layout;
+    layout = config.my.desktop.gnome.app-layout;
 
     # Function creates dconf compatible app picker entry based on name of app or folder and position.
     apl-entry = with lib.hm.gvariant; name: (position: 

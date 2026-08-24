@@ -1,4 +1,4 @@
-{ pkgs, hostname, unstable-pkgs, ... }:
+{ hostname, ... }:
 
 { 
   imports = [
@@ -10,23 +10,17 @@
     homeDirectory = "/home/guillaume";
   };
 
-  desktop.gnome.wallpaper = {
-    image = ./background- + hostname + ".png";
-    primary = "#06282D";
-    secondary = "#000000";
-  };
-
-  home.packages = (with unstable-pkgs; [
-    cura-appimage
-  ]);
-
-  software = {
-    fragments.enable = true;
-    discord.package = unstable-pkgs.vesktop;
+  my.desktop.gnome = let
+    host-path = ../../hosts/${hostname};
+  in {
+    wallpaper = {
+      image = "${host-path}/background.png";
+      primary = "#06282D";
+      secondary = "#000000";
+    };
+    app-layout = import "${host-path}/gnome.settings.nix";
   };
 
   software.gaming.enable = true;
-
-  gnome.app-layout = import ./gnome.settings.nix;
 
 }
