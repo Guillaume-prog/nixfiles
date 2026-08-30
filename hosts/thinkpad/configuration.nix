@@ -14,6 +14,8 @@
   # Keyboard layout
   keyboard.layout = "fr";
 
+  my.samba.nas.enable = true;
+
   my.software.docker.enable = true;
   my.software = {
     desktop.enable = true;
