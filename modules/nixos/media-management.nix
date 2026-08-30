@@ -16,6 +16,8 @@
 
       mkvtoolnix # MKV manager
       subtitleedit # Subtitle editor
+
+      rockbox-utility # For Hifi Walker
     ];
   };
 }
