@@ -56,7 +56,7 @@ folders=$(dconf dump /$folder_root/           |
 
 
 
-# Push to file
+# Generate full file
 # =============================================================================
 
 text=$(cat << BLOCK
@@ -71,4 +71,23 @@ folders = $folders;
 }
 BLOCK
 ) 
-echo "$text" > /nixfiles/hosts/$(hostname)/gnome.settings.nix
+
+# Save and commit
+# =============================================================================
+
+
+
+settings_file=hosts/$(hostname)/gnome.settings.nix
+
+pushd /nixfiles > /dev/null
+if [ "$text" == "$(cat $settings_file)" ]; then
+    echo "No layout changes to commit"
+else
+    echo "Commiting new layout changes"
+
+    echo "$text" > $settings_file
+    git reset HEAD -- . # Unstages all changes
+    git add $settings_file
+    git commit -m "AUTO - Updated app layout for $(hostname)"
+fi
+popd > /dev/null
