@@ -3,6 +3,7 @@
     ../desktop/gnome/home
     ./firefox
     ./git
+    ./htpc
     ./terminal
     ./audio.nix
     ./vscode.nix

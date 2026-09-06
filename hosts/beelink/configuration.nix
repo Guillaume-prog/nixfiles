@@ -25,6 +25,8 @@
   my.gnome.autologin.user = "guillaume";
   my.software.gaming.enable = true;
 
+  my.htpc.enable = true;
+
   environment.systemPackages = [pkgs.plex-htpc];
 
   system.stateVersion = "25.11";
