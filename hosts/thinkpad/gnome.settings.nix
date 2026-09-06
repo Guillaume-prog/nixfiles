@@ -2,7 +2,7 @@
 
 favorite-apps = ["firefox.desktop" "vesktop.desktop" "codium.desktop" "writer.desktop" "org.gnome.SimpleScan.desktop" "org.gnome.Nautilus.desktop"];
 app-folders = ["Desktop" "Utilities" "System" "3d2ca924-addb-449a-9453-5a52d6ebee50" "22eab952-e707-4e0f-9008-6e6f5128d639" "c54c3ba9-895e-49ea-a4b9-4b58b567bbd3"];
-app-tray = [["Desktop" "System" "Utilities" "3d2ca924-addb-449a-9453-5a52d6ebee50" "22eab952-e707-4e0f-9008-6e6f5128d639" "c54c3ba9-895e-49ea-a4b9-4b58b567bbd3" "plex-htpc.desktop" "org.nicotine_plus.Nicotine.desktop" "beepertexts.desktop" "org.bunkus.mkvtoolnix-gui.desktop" "org.pulseaudio.pavucontrol.desktop" "obsidian.desktop" "org.prismlauncher.PrismLauncher.desktop" "steam.desktop"]];
+app-tray = [["Desktop" "System" "Utilities" "3d2ca924-addb-449a-9453-5a52d6ebee50" "22eab952-e707-4e0f-9008-6e6f5128d639" "c54c3ba9-895e-49ea-a4b9-4b58b567bbd3" "plex-htpc.desktop" "beepertexts.desktop" "org.bunkus.mkvtoolnix-gui.desktop" "org.pulseaudio.pavucontrol.desktop" "obsidian.desktop"]];
 
 folders = {
 
@@ -49,7 +49,7 @@ folders = {
 	};
 	
 	"org/gnome/desktop/app-folders/folders/c54c3ba9-895e-49ea-a4b9-4b58b567bbd3" = {
-		apps=["calibre-gui.desktop" "subtitleedit.desktop" "puddletag.desktop"];
+		apps=["calibre-gui.desktop" "subtitleedit.desktop" "puddletag.desktop" "org.nicotine_plus.Nicotine.desktop"];
 		name="Media Management";
 		translate=false;
 	};
