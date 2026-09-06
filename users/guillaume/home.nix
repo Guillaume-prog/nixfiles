@@ -11,6 +11,7 @@
   my.desktop.gnome = let
     host-path = ../../hosts/${hostname};
   in {
+    user-icon = ./profile.png;
     wallpaper = {
       image = "${host-path}/background.png";
       primary = "#06282D";

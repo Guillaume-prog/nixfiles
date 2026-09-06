@@ -13,5 +13,6 @@ with lib.hm.gvariant; {
     ./extensions.nix
     ./shortcuts.nix
     ./trackpad.nix
+    ./user-icon.nix
   ];
 }
