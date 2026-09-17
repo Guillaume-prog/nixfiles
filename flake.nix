@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nur.url = "github:nix-community/nur";
 
     sops-nix = {
@@ -79,6 +78,6 @@
         })
         hostnames);
   in {
-    nixosConfigurations = create-configurations ["asus" "beelink" "north" "wsl" "optiplex" "potato" "thinkpad" "pavilion"];
+    nixosConfigurations = create-configurations ["beelink" "north" "optiplex" "thinkpad"];
   };
 }
