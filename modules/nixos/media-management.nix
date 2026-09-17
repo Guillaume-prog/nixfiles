@@ -18,6 +18,8 @@
       subtitleedit # Subtitle editor
 
       rockbox-utility # For Hifi Walker
+
+      immich-cli # Image uploader
     ];
   };
 }
