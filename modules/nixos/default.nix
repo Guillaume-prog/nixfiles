@@ -22,6 +22,7 @@
     ./nh.nix
     ./office.nix
     ./printer.nix
+    ./remote-desktop.nix
     ./samba.nix
     ./sops.nix
     ./users.nix
