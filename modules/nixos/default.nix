@@ -8,6 +8,7 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.default
+    inputs.jovian.nixosModules.default
     ../desktop/gnome/configuration.nix
     ./bootloader.nix
     ./cli-utils.nix

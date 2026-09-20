@@ -1,0 +1,114 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 3,
+                "code": 16,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb",
+                "analog_threshold": 1
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_RIGHT",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 3,
+                "code": 16,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb",
+                "analog_threshold": -1
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_LEFT",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 3,
+                "code": 17,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb",
+                "analog_threshold": -1
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_UP",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 3,
+                "code": 17,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb",
+                "analog_threshold": 1
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_DOWN",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 304,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_ENTER",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 305,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_ESC",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 310,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_E",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 311,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_L",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 316,
+                "origin_hash": "01bb4d8df1bb3fb619ff2f692aacd3bb"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_LEFTCTRL+KEY_LEFTALT+Q",
+        "mapping_type": "key_macro"
+    }
+]
